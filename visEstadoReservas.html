@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Estado actual de los eventos</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+    <script src="./node_modules/vis/dist/vis.js"></script>
+    <link href="./node_modules/vis/dist/vis.css" rel="stylesheet" type="text/css" />
+    <script src="./src/visEstadoReservas.js"></script>
+    <link rel="stylesheet" href="./style/visEstadoReservas.css">
+
+    <style type="text/css">
+        .vis-item .vis-onUpdateTime-tooltip {
+            border-radius: 4px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <h1 id="cabecera">Estado actual de los eventos</h1>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <form id="formularioInformesVehiculos">
+                    <div class="combobox" data-add="true">
+                        Eventos a filtrar:
+                        <select id="seleccionComboBox">
+                              <option value="todos">Todos</option>
+                              <option value="conciertos">Conciertos</option>
+                              <option value="carreras">Carreras</option>
+                              <option value="charlas">Charlas</option>
+                              <option value="actividadesMontaña">Actividades montaña</option>
+                            </select>
+                    </div>
+                    <!--.combobox-->
+            </div>
+            <div class="column">
+                <div class="">
+                    Fecha reserva:
+                    <input id="dateTime" type="text" name="datetimes" />
+                </div>
+            </div>
+        </div>
+
+        </form>
+        <button class="btn btn-primary btn-block" onclick="enviarFiltro();llamadaBaseDatos()">Filtrar</button>
+    </div>
+
+    <div id="visContainer">
+        <div id="mytimeline3"></div>
+    </div>
+    <!--<script>
+
+  // create items
+  var numberOfItems = 10;
+  var items = new vis.DataSet();
+  var types = [ 'box', 'point', 'range']
+
+ 
+  for (var order = 0; order < numberOfItems; order++) {
+    var date = vis.moment();
+   
+
+    date.add(Math.round(Math.random() * 2), 'hour');
+    items.add({
+      id:      order,
+      type: types[Math.floor(3 * Math.random())],
+      content: 'Item ' + order,
+      start:   date.clone().add(order + 1, 'hour'),
+      end:     date.clone().add(order + 3, 'hour')
+    });
+  }
+  
+  // specify options
+  var options = {
+    multiselect: true,
+    maxHeight: 400,
+    start: new Date((new Date()).valueOf() - 10000000),
+    end: new Date(1000*60*60*24 + (new Date()).valueOf()),
+    editable: true
+  };
+
+  // create groups
+  var numberOfGroups = 25; 
+  var groups = new vis.DataSet()
+  for (var i = 0; i < numberOfGroups; i++) {
+    groups.add({
+      id: i,
+      content: 'Vehículo&nbsp;' + i
+    })
+  }
+
+  // create items for groups
+  var numberOfItems = 1000;
+  var itemsWithGroups = new vis.DataSet();
+
+  var itemsPerGroup = Math.round(numberOfItems/numberOfGroups);
+
+  for (var truck = 0; truck < numberOfGroups; truck++) {
+    var date = new Date();
+    for (var order = 0; order < itemsPerGroup; order++) {
+      date.setHours(date.getHours() +  4 * (Math.random() < 0.2));
+      var start = new Date(date);
+
+      date.setHours(date.getHours() + 2 + Math.floor(Math.random()*4));
+      var end = new Date(date);
+
+      itemsWithGroups.add({
+        id: order + itemsPerGroup * truck,
+        group: truck,
+        start: start,
+        end: end,
+        content: 'Reserva ' + order
+      });
+    }
+  }
+
+
+  var options3 = jQuery.extend(options, {
+    orientation: 'top',
+    tooltipOnItemUpdateTime: true
+  })
+  var container3 = document.getElementById('mytimeline3');
+  timeline3 = new vis.Timeline(container3, itemsWithGroups, groups, options3);
+
+</script>-->
+
+</body>
+
+</html>

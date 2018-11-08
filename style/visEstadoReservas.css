@@ -1,0 +1,27 @@
+.column {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#dateTime{width: 300px;
+text-align: center;}
+
+#cabecera{
+    text-align: center;
+}
+
+#mytimeline3{
+    margin: 10px;
+}
+
+.textoCentroToolTip{
+    text-align: center;
+}
