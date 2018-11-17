@@ -82,7 +82,7 @@ function add_row() {
     document.getElementById("new_age").value = "";
 }
 
-function tablaVehiculosAdministrador() {
+function tablaEventosAdministrador() {
     //disableBotonLateralVehiculos();
     $('#myTable tr').remove();
     $('#myTable tbody').remove();

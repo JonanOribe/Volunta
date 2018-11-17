@@ -233,3 +233,7 @@
          transform: translateX(50%);
      }
  }
+ 
+ .buttonColor {
+     background: #0F3C72;
+ }
