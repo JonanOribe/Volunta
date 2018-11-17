@@ -83,7 +83,7 @@ function add_row() {
 }
 
 function tablaEventosAdministrador() {
-    //disableBotonLateralVehiculos();
+
     $('#myTable tr').remove();
     $('#myTable tbody').remove();
     $('#myTable thead').remove();
@@ -91,7 +91,7 @@ function tablaEventosAdministrador() {
     $('#myInput').remove();
     var contentInput = '<input type="text" id="myInput" onkeyup="busquedaMatriculas()" placeholder="Busqueda por matricula.." title="Type in a name">';
     $('#campoBusqueda').append(contentInput);
-    //content += '<table id="myTable" width="360" border="1"><thead>';
+
     var content = '<thead><tr><th>Título evento</th><th>Organizador</th><th>Tipo evento</th><th>Participantes</th><th>Disponibilidad</th><th>Más información</th></tr></thead><tbody>';
 
 
