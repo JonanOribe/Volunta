@@ -16,6 +16,10 @@ Para lanzar la base de datos ir a ./APIJSON y lanzar json-server --watch db.json
 
 #Dependencias Cypress (pruebas unitarias):
 
-cd Volunta\node_modules\.bin> .\cypress install
+Levnatar servidor con la extensión Live Server
 
-Para lanzar los test .\cypress open (Lanza una aplicación Electron externa)
+cd ./node_modules/.bin ./cypress install
+
+Para lanzar los test ./cypress open (Lanza una aplicación Electron externa)
+
+Hacer click sobre la pantalla Electron en la carpeta testUnitarios y luego en el archivo testArranque.spec.js
