@@ -15,12 +15,12 @@ function addRowHandlers() {
             function(row) {
                 return function() {
                     var datos = [];
-                    var matricula = row.getElementsByTagName("td")[0].innerHTML;
-                    var modelo = row.getElementsByTagName("td")[1].innerHTML;
-                    var marca = row.getElementsByTagName("td")[2].innerHTML;
-                    var kilometraje = row.getElementsByTagName("td")[3].innerHTML;
+                    var tituloEvento = row.getElementsByTagName("td")[0].innerHTML;
+                    var organizador = row.getElementsByTagName("td")[1].innerHTML;
+                    var tipoEvento = row.getElementsByTagName("td")[2].innerHTML;
+                    var participantes = row.getElementsByTagName("td")[3].innerHTML;
 
-                    datos.push(matricula, modelo, marca, kilometraje);
+                    datos.push(tituloEvento, organizador, tipoEvento, participantes);
 
                     launchInfo(datos);
                 };
