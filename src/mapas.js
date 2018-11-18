@@ -1,5 +1,14 @@
 function cargarMapa() {
 
+    if ($('#mapid').length > 0) {
+        $("#mapid").remove();
+    }
+
+    var htmlMapa = '<div id="mapid" style="width: 100%; height: 400px;"></div>';
+
+    $("#espacioMapa").append(htmlMapa);
+
+    var evento = $('#tituloEvento')[0].innerHTML;
     var mymap = L.map('mapid').setView([41.3922500, 2.1648800], 14);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -8,20 +17,7 @@ function cargarMapa() {
     }).addTo(mymap);
 
     L.marker([41.3922500, 2.1648800]).addTo(mymap)
-        .bindPopup("<b>Evento!</b><br />").openPopup();
-
-    //L.circle([51.508, -0.11], 500, {
-    //    color: 'red',
-    //    fillColor: '#f03',
-    //    fillOpacity: 0.5
-    //}).addTo(mymap).bindPopup("I am a circle.");
-    //
-    //L.polygon([
-    //    [51.509, -0.08],
-    //    [51.503, -0.06],
-    //    [51.51, -0.047]
-    //]).addTo(mymap).bindPopup("I am a polygon.");
-
+        .bindPopup("<b>" + evento + "!</b><br />").openPopup();
 
     var popup = L.popup();
 
