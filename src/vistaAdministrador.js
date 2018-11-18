@@ -6,6 +6,10 @@
 //
 //});
 
+function recargarInfo() {
+    document.getElementById('informacionEvento').style.display = 'block';
+}
+
 function addRowHandlers() {
     var table = document.getElementById("myTable");
     var rows = table.getElementsByTagName("tr");
@@ -36,6 +40,7 @@ function launchInfo(datos) {
     document.getElementsByClassName("tablink")[0].click();
     document.getElementById('id01').style.display = 'block';
     console.log(datos);
+    document.getElementById('informacionEvento').style.display = 'block';
     document.getElementById('tituloEvento').innerHTML = "Titulo evento: " + datos[0];
     document.getElementById('organizador').innerHTML = "Organizador: " + datos[1];
     document.getElementById('tipoEvento').innerHTML = "Tipo evento: " + datos[2];
