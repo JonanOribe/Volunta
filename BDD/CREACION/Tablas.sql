@@ -43,6 +43,14 @@ FOREIGN KEY (voluntario) REFERENCES voluntario(idvoluntario),
 FOREIGN KEY (lugar) REFERENCES lugar(idlugar)
 );
 
+create table evento_voluntario (
+voluntario int,
+evento int,
+FOREIGN KEY (voluntario) REFERENCES voluntario(idvoluntario),
+FOREIGN KEY (evento) REFERENCES evento(idevento)
+);
+
+
 create table incidencia (
 idincidencia int auto_increment primary key,
 voluntario int,
