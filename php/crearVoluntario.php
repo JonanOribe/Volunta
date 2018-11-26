@@ -9,6 +9,7 @@ $telefono = $_POST["telefono"];
 $direccion = $_POST["direccion"];
 $ciudad = $_POST["ciudad"];
 $email = $_POST["email"];
+$horas = 0;
 
 
 	
@@ -18,6 +19,7 @@ $email = $_POST["email"];
 		else{
 			insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email);
 			//header("Location: admin.php");
+			insertarVoluntario($con, $dni, $horas);
 			echo '<BUTTON onclick="window.close();">Close me.</BUTTON>';
 		}
 	

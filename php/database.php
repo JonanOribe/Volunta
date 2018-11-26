@@ -31,7 +31,9 @@
 	function insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email){
 		mysqli_query($con, "insert into persona values('$dni', '$nombre', '$apellidos', '$telefono', '$direccion', '$ciudad', '$email')");
 	}
-	
+	function insertarVoluntario($con, $dni, $horas){
+		mysqli_query($con, "INSERT INTO `voluntario`(`persona`, `horas`) VALUES ('$dni',$horas)");
+	}
 
 
 	function obtenerPersona($con, $dni){
