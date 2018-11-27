@@ -35,7 +35,15 @@
 		mysqli_query($con, "INSERT INTO `voluntario`(`persona`, `horas`) VALUES ('$dni',$horas)");
 	}
 
-
+	//FUNCIÓN LISTAR PERSONAS
+	function listarPersonas($con){
+		$result = mysqli_query($con, "select * from persona");
+		$personas = array();
+		while($fila = mysqli_fetch_array($result)){
+			$personas[] = $fila;
+		}
+		return $usuarios;//Devuelvo un array con los datos de todos los usuarios
+	}
 	function obtenerPersona($con, $dni){
 		$resultado = mysqli_query($con, "select * from persona where dni='$dni'");
 		if(mysqli_num_rows($resultado)==0){
