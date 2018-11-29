@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="./style/stylesAdmin.css">
+    <link rel="stylesheet" href="./style/stylesPerfilVoluntario.css">
     <script src="./src/scriptTablasAdmin.js"></script>
     <script src="./src/vistaAdministrador.js"></script>
     <script src="./src/vistaPrincipalVoluntario.js"></script>
@@ -29,6 +30,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script src="./src/mapas.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -48,7 +50,7 @@
                             <a id="botonLateralEventos" href="#" onclick="location.href='perfilVoluntario.html';">Mi perfil</a>
                         </li>
                         <li>
-                            <a id="botonLateralEventos" href="#" onclick="tablaEventosAdministrador()">Eventos</a>
+                            <a id="botonLateralEventos" href="#" onclick="location.href='vistaPrincipalVoluntario.html';">Eventos</a>
                         </li>
                         <li>
                             <a id="botonLateralEventos" href="#">Mis Eventos</a>
@@ -86,6 +88,20 @@
                     </button>
                 </div>
             </nav>
+            <div id="areaPerfil">
+                <div id="perfilCard">
+                    <img id="imagenPerfil" src="./img/johnDoe.png" alt="John">
+                    <p><button id="perfilButton">Cambiar</button></p>
+                </div>
+                <div id="perfilCardDatos">
+                    <p>Número Voluntario: <span></span></p>
+                    <p>Nombre: <span></span></p>
+                    <p>Apellidos: <span></span></p>
+                    <p>DNI: <span></span></p>
+                    <p>Teléfono: <span></span></p>
+                    <p>Email: <span></span></p>
+                </div>
+            </div>
             <div id="campoBusqueda">
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por nombre.." title="Type in a name">
             </div>
