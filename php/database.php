@@ -65,6 +65,11 @@
 	
 	////////////////////////////////////////////// FUNCIONES DE EVENTOS //////////////////////////////////////////////
 	
+	function insertarLocalizacion($con, $nombreLugar, $longitud, $latitud){
+		mysqli_query($con, "insert into lugar(nombre, longitud, latitud) values('$nombreLugar', '$longitud', '$latitud')");
+	}
+
+/*
 	function insertarEvento($con, $nombre){
 		mysqli_query($con, "insert into evento (nombre, latitud, longitud) values('$nombre', '$latitud', '$longitud')");
 	}
@@ -85,6 +90,7 @@
 	function borrarEvento($con, $id){
 		mysqli_query($con, "delete from evento where id=$id");
 	}
+	*/
 	
 	////////////////////////////////////////////// PRUEBAS //////////////////////////////////////////////
 	
