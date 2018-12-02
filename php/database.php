@@ -34,6 +34,9 @@
 	function insertarVoluntario($con, $dni, $horas){
 		mysqli_query($con, "INSERT INTO `voluntario`(`persona`, `horas`) VALUES ('$dni',$horas)");
 	}
+	function insertarCoordinador($con, $dni){
+		mysqli_query($con, "INSERT INTO `coordinador`(`persona`) VALUES ('$dni')");
+	}
 
 	//FUNCIÓN LISTAR PERSONAS
 	function listarPersonas($con){
@@ -42,7 +45,7 @@
 		while($fila = mysqli_fetch_array($result)){
 			$personas[] = $fila;
 		}
-		return $usuarios;//Devuelvo un array con los datos de todos los usuarios
+		return $personas;//Devuelvo un array con los datos de todos los usuarios
 	}
 	function obtenerPersona($con, $dni){
 		$resultado = mysqli_query($con, "select * from persona where dni='$dni'");
@@ -63,11 +66,48 @@
 		mysqli_query($con, "delete from persona where dni='$dni'");
 	}
 	
+
+
+	
 	////////////////////////////////////////////// FUNCIONES DE EVENTOS //////////////////////////////////////////////
 	
 	function insertarLocalizacion($con, $nombreLugar, $longitud, $latitud){
 		mysqli_query($con, "insert into lugar(nombre, longitud, latitud) values('$nombreLugar', '$longitud', '$latitud')");
 	}
+
+	function insertarEvento($con, $coordinador, $lugar, $nombre, $dia, $tipo, $estado){
+		mysqli_query($con, "insert into evento(coordinador, lugar, nombre, dia, tipo, estado) values('$coordinador', '$lugar', '$nombre', '$dia', '$tipo', '$estado')");
+	}
+
+
+		//consulta para desplegable de coordinadores
+
+		function desplegableEventos($con){
+			$consulta2 = "select idlugar, nombre FROM lugar;";
+			$resultado2 = mysqli_query($con, $consulta2);
+	
+			
+				while($fila = mysqli_fetch_array($resultado2)){
+					extract($fila);
+					echo "<option value='$idlugar'>$nombre</option>";
+				}
+	
+		}
+
+		//consulta para desplegable de coordinadores
+
+		function desplegableCoordinadores($con){
+			$consulta1 = "select coordinador.idcoordinador, persona.nombre, persona.apellidos
+			FROM coordinador INNER JOIN persona ON coordinador.persona = persona.DNI;";
+			$resultado1 = mysqli_query($con, $consulta1);
+	
+			
+				while($fila = mysqli_fetch_array($resultado1)){
+					extract($fila);
+					echo "<option value='$idcoordinador'>$nombre - $apellidos</option>";
+				}
+	
+		}
 
 /*
 	function insertarEvento($con, $nombre){
