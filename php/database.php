@@ -47,6 +47,28 @@
 		}
 		return $personas;//Devuelvo un array con los datos de todos los usuarios
 	}
+
+	//FUNCIÓN LISTAR COORDINADORES
+	function listarCoordinadores($con){
+		$result = mysqli_query($con, "select * from coordinador");
+		$coordinadores = array();
+		while($fila = mysqli_fetch_array($result)){
+			$coordinadores[] = $fila;
+		}
+		return $coordinadores;//Devuelvo un array con los datos de todos los coordinadores
+	}
+
+	//FUNCIÓN LISTAR LOCALIZACIONES
+	function listarLocalizaciones($con){
+		$result = mysqli_query($con, "select * from lugar");
+		$localizaciones = array();
+		while($fila = mysqli_fetch_array($result)){
+			$localizaciones[] = $fila;
+		}
+		return $localizaciones;//Devuelvo un array con los datos de todos los lugares
+	}
+
+
 	function obtenerPersona($con, $dni){
 		$resultado = mysqli_query($con, "select * from persona where dni='$dni'");
 		if(mysqli_num_rows($resultado)==0){

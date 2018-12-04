@@ -8,13 +8,6 @@ Para poder lanzar las pruebas unitarias es necesario tener la web en un hosting 
 
 npm install
 
-#Dependencias base de datos:
-
-Esta parte ya no es necesaria, dado que la base de datos ha sido migrada a MySQL
-
-npm install -g json-server
-
-Para lanzar la base de datos ir a ./APIJSON y lanzar json-server --watch db.json a través de la consola.
 
 #Dependencias Cypress (pruebas unitarias):
 
