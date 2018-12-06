@@ -1,3 +1,4 @@
+create database Volunta1;
 use volunta1;
 
 create table persona (
@@ -55,6 +56,7 @@ create table incidencia (
 idincidencia int auto_increment primary key,
 voluntario int,
 evento int,
+comentario VARCHAR(260),
 FOREIGN KEY (voluntario) REFERENCES voluntario(idvoluntario),
 FOREIGN KEY (evento) REFERENCES evento(idevento)
 );
