@@ -2,12 +2,12 @@ use volunta1;
 
 --Persona
 
-INSERT INTO persona (dni, nombre, apellidos, telefono, direccion, ciudad, email)
-VALUES ('78945673B', 'Josu', 'Garcia Marquez', '67584392', 'Carretera Barna,14', 'Barcelona','josumar@gmail.com'),
-('32145676C', 'Sara', 'Garcia Saez', '67543122', 'Avenida central,9', 'Barcelona','saragar@gmail.com'),
-('44564683F', 'Tamara', 'Sojo Puente', '63343177', 'Avenida central,12', 'Barcelona','tamaraso@gmail.com'),
-('56373478F', 'Mikel', 'Alberti Soiz', '63475632', 'Barrio del Sol,37', 'Barcelona','mikelalb@gmail.com'),
-('56347296Y', 'Marta', 'Alberti Soiz', '63475142', 'Barrio de Granada,102', 'Barcelona','martaalb@gmail.com');
+INSERT INTO persona (dni, nombre, apellidos, telefono, direccion, ciudad, email,usuario,contrasenya)
+VALUES ('78945673B', 'Josu', 'Garcia Marquez', '67584392', 'Carretera Barna,14', 'Barcelona','josumar@gmail.com',"admin","amin"),
+('32145676C', 'Sara', 'Garcia Saez', '67543122', 'Avenida central,9', 'Barcelona','saragar@gmail.com',"admin2","admin2"),
+('44564683F', 'Tamara', 'Sojo Puente', '63343177', 'Avenida central,12', 'Barcelona','tamaraso@gmail.com',"tamara","tamara"),
+('56373478F', 'Mikel', 'Alberti Soiz', '63475632', 'Barrio del Sol,37', 'Barcelona','mikelalb@gmail.com',"mikel","mikel"),
+('56347296Y', 'Marta', 'Alberti Soiz', '63475142', 'Barrio de Granada,102', 'Barcelona','martaalb@gmail.com',"marta","marta");
 
 --Coordinador
 INSERT INTO coordinador (idcoordinador, persona)
