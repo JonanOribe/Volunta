@@ -50,7 +50,8 @@
 
 	//FUNCIÓN LISTAR COORDINADORES
 	function listarCoordinadores($con){
-		$result = mysqli_query($con, "select * from coordinador");
+		$result = mysqli_query($con, "select persona.dni, persona.nombre
+		FROM coordinador INNER JOIN persona ON coordinador.persona = persona.DNI;");
 		$coordinadores = array();
 		while($fila = mysqli_fetch_array($result)){
 			$coordinadores[] = $fila;

@@ -127,8 +127,8 @@
             </div>
             <table id="myTable">
                 <tr class="header">
-                    <th style="width:60%;">Id_Coordinador</th>
-                    <th style="width:40%;">DNI</th>
+                    <th style="width:60%;">DNI</th>
+                    <th style="width:40%;">Nombre</th>
                 </tr>
                 <?php
       
@@ -144,10 +144,12 @@
           }
           else{
               
+            
+
               foreach($coordinadores as $coordinador){
                   echo "<tr>
-                          <td>".$coordinador['idcoordinador']."</td>
-                          <td>".$coordinador['persona']."</td>
+                          <td>".$coordinador['dni']."</td>
+                          <td>".$coordinador['nombre']."</td>
                           
                       </tr>";
               }
