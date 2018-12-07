@@ -100,6 +100,10 @@
 		mysqli_query($con, "insert into lugar(nombre, longitud, latitud) values('$nombreLugar', '$longitud', '$latitud')");
 	}
 
+	function insertarIncidencia($con, $tipoIncidencia, $detalleIncidencia){
+		mysqli_query($con, "insert into incidencia(incidencia,comentario) values('$tipoIncidencia', '$detalleIncidencia')");
+	}
+
 	function insertarEvento($con, $coordinador, $lugar, $nombre, $dia, $tipo, $estado){
 		mysqli_query($con, "insert into evento(coordinador, lugar, nombre, dia, tipo, estado) values('$coordinador', '$lugar', '$nombre', '$dia', '$tipo', '$estado')");
 	}

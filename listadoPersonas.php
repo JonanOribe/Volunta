@@ -69,10 +69,10 @@
                             <a href="#" onclick="location.href='informesEventos.html';">Eventos</a>
                         </li>
                         <li>
-                            <a href="#">Voluntarios</a>
+                        <a href="#" onclick="location.href='informesVoluntarios.html';">Voluntarios</a>
                         </li>
                         <li>
-                            <a href="#">Incidencias</a>
+                            <a href="#" onclick="location.href='informesIncidencias.html';">Incidencias</a>
                         </li>
                     </ul>
                 </li>

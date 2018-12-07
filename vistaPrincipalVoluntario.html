@@ -155,12 +155,19 @@
 
                 <form class="w3-container" action="/action_page.php">
                     <div class="w3-section">
-                        <label><b>Tipo incidencia</b></label>
+                        <label><b>Tipo incidencia: </b></label>
                         <select>
                                 <option value="incidente">Incidente</option>
                                 <option value="horario">Horario</option>
                                 <option value="materiales">Materiales</option>
                                 <option value="otros">Otros</option>
+                              </select>
+                        <label><b>Título evento: </b></label>
+                        <!--Esto debería llegarse con query-->
+                        <select>
+                                <option value="concierto">Concierto</option>
+                                <option value="marcha">Marcha</option>
+                                <option value="trekking">Trekking</option>
                               </select>
                         <p><label><b>Detalle su incidencia:</b></label></p>
                         <textarea rows="4" cols="65">
