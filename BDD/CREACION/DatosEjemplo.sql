@@ -1,7 +1,7 @@
 use volunta1;
 
 INSERT INTO persona (dni, nombre, apellidos, telefono, direccion, ciudad, email,usuario,contrasenya)
-VALUES ('78945673B', 'Josu', 'Garcia Marquez', '67584392', 'Carretera Barna,14', 'Barcelona','josumar@gmail.com',"admin","amin"),
+VALUES ('78945673B', 'Josu', 'Garcia Marquez', '67584392', 'Carretera Barna,14', 'Barcelona','josumar@gmail.com',"admin","admin"),
 ('32145676C', 'Sara', 'Garcia Saez', '67543122', 'Avenida central,9', 'Barcelona','saragar@gmail.com',"admin2","admin2"),
 ('44564683F', 'Tamara', 'Sojo Puente', '63343177', 'Avenida central,12', 'Barcelona','tamaraso@gmail.com',"tamara","tamara"),
 ('56373478F', 'Mikel', 'Alberti Soiz', '63475632', 'Barrio del Sol,37', 'Barcelona','mikelalb@gmail.com',"mikel","mikel"),
