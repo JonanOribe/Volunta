@@ -30,3 +30,5 @@ VALUES (1,1),(2,2),(2,3);
 
 INSERT INTO incidencia (idincidencia,voluntario,evento,tipoIncidencia,detalleIncidencia)
 VALUES (1,1,1,'Materiales','La mesa de mezclas no funcionaba correctamente. Posiblemente sea la entrada del micrófono'),(2,1,2,'Materiales','Faltaron 20 dorsales'),(3,2,1,'Materiales','Pocas sillas para mucha gente');
+
+
