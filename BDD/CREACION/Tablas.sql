@@ -8,7 +8,9 @@ apellidos varchar(50),
 telefono int(15),
 direccion varchar(50),
 ciudad varchar(20),
-email varchar(40)
+email varchar(40),
+usuario varchar(40),
+contrasenya varchar(40)
 );
 
 create table coordinador (
@@ -56,7 +58,8 @@ create table incidencia (
 idincidencia int auto_increment primary key,
 voluntario int,
 evento int,
-comentario VARCHAR(260),
+tipoIncidencia VARCHAR(260),
+detalleIncidencia VARCHAR(260),
 FOREIGN KEY (voluntario) REFERENCES voluntario(idvoluntario),
 FOREIGN KEY (evento) REFERENCES evento(idevento)
 );
