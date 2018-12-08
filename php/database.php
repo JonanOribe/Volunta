@@ -6,8 +6,8 @@
 
 	$con = mysqli_connect($server, $user, $pass, $db) or die ("Error al conectar con la base de datos");
 	
-	function login($con, $dni){
-		$result = mysqli_query($con, "select * from persona where dni='".$dni."'");
+	function login($con, $usuario, $contrasenya){
+		$result = mysqli_query($con, "select * from persona where usuario='".$usuario."' and contrasenya='".$contrasenya."'");
 		if(mysqli_num_rows($result)==0){
 			return 0; //Si no existe el usuario devuelvo 0
 		}
