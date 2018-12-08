@@ -9,6 +9,8 @@ $telefono = $_POST["telefono"];
 $direccion = $_POST["direccion"];
 $ciudad = $_POST["ciudad"];
 $email = $_POST["email"];
+$ususario = $_POST["usuario"];
+$contrasenya = $_POST["contrasenya"];
 
 
 
@@ -17,7 +19,7 @@ $email = $_POST["email"];
 			echo "Debes rellenar todos los campos";
 		}
 		else{
-			insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email);
+			insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $ususario, $contrasenya);
 			//header("Location: admin.php");
 			insertarCoordinador($con, $dni);
 			echo '<BUTTON onclick="window.close();">Close me.</BUTTON>';

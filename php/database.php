@@ -28,8 +28,8 @@
 			
 			ORDEN SQL --> INSERT INTO `persona`(`dni`, `nombre`, `apellidos`, `telefono`, `direccion`, `ciudad`, `email`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
 	*/
-	function insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email){
-		mysqli_query($con, "insert into persona values('$dni', '$nombre', '$apellidos', '$telefono', '$direccion', '$ciudad', '$email')");
+	function insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $usuario, $contrasenya){
+		mysqli_query($con, "insert into persona values('$dni', '$nombre', '$apellidos', '$telefono', '$direccion', '$ciudad', '$email', '$usuario', '$contrasenya')");
 	}
 	function insertarVoluntario($con, $dni, $horas){
 		mysqli_query($con, "INSERT INTO `voluntario`(`persona`, `horas`) VALUES ('$dni',$horas)");

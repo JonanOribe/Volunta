@@ -9,17 +9,17 @@ $telefono = $_POST["telefono"];
 $direccion = $_POST["direccion"];
 $ciudad = $_POST["ciudad"];
 $email = $_POST["email"];
-$usuario = $_POST["usuario"];
+$ususario = $_POST["usuario"];
 $contrasenya = $_POST["contrasenya"];
 $horas = 0;
 
 
 	
-		if(empty($dni) || empty($nombre) || empty($apellidos) || empty($telefono) || empty($direccion) || empty($ciudad) || empty($email)|| empty($usuario) || empty($contrasenya)){
+		if(empty($dni) || empty($nombre) || empty($apellidos) || empty($telefono) || empty($direccion) || empty($ciudad) || empty($email)){
 			echo "Debes rellenar todos los campos";
 		}
 		else{
-			insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email,$usuario,$contrasenya);
+			insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $ususario, $contrasenya);
 			//header("Location: admin.php");
 			insertarVoluntario($con, $dni, $horas);
 			echo '<BUTTON onclick="window.close();">Close me.</BUTTON>';
