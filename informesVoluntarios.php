@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Informes eventos</title>
+    <title>Informes voluntarios</title>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -28,8 +28,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 
-    <script src="./src/informesEventos.js"></script>
-    <link rel="stylesheet" href="./style/informesEventos.css">
+    <script src="./src/informesIncidenciasVoluntarios.js"></script>
     <link rel="stylesheet" href="./style/informesEventos.css">
 </head>
 
@@ -47,7 +46,7 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a class="botonLateralEventos" href="#" onclick="tablaEventosAdministrador()">Eventos</a>
+                            <a class="botonLateralEventos" href="#"  onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Eventos</a>
                         </li>
                         <li>
                             <a onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Voluntarios</a>
@@ -113,37 +112,57 @@
                     </div>
                 </div>
             </nav>
-            <h1>Rellene los campos para solicitar el informe</h1>
+            <h1>Descargue el informe de voluntarios</h1>
             <div>
                 <div class="row">
                     <div class="column">
-                        <form id="formularioInformesEventos">
-                            <div class="combobox" data-add="true">
-                                Eventos a filtrar:
-                                <select id="seleccionComboBox">
-                                    <option value="todos">Todos</option>
-                                    <option value="conciertos">Conciertos</option>
-                                    <option value="carreras">Carreras</option>
-                                    <option value="charlas">Charlas</option>
-                                    <option value="actividadesMontaña">Actividades montaña</option>
-                                </select>
-                            </div>
-                            <!--.combobox-->
-                    </div>
-                    <div class="column">
-                        <div class="form-group row">
-                            <label for="example-tel-input" class="col-3 col-form-label">Rango de fechas: </label>
-                            <div class="col-9">
-                                <input id="dateTime" type="text" name="datetimes" />
-                            </div>
-                        </div>
+                        <form id="formularioInformesVoluntarios">
+
                     </div>
                 </div>
 
 
                 <button type="button" class="btn btn-primary btn-block" onclick="enviarFiltro()">Generar Informe</button>
+                <p id="datosOcultos" style="display:none"></p>
                 </form>
             </div>
+
+                            <?php
+      
+      require_once("./php/database.php");
+          
+          //echo "<h3>LISTADO PERSONAS</h3>";
+          
+                     
+         $personas = listarPersonas($con);
+         $listadoPersonas=[];
+          
+          if(count($personas) == 0){
+              echo "<br/>No hay personas<br/>";
+          }
+          else{
+              
+              foreach($personas as $persona){
+                  //echo "<tr>
+                  //        <td>".$persona['dni']."</td>
+                  //        <td>".$persona['nombre']."</td>
+                  //        
+                  //    </tr>";
+
+                      array_push($listadoPersonas,$persona['dni'],$persona['nombre']);            
+              }
+
+          }
+          
+          cerrarConexion($con);
+          
+?>
+
+<script>
+   var arrayPersonas=<?= json_encode($listadoPersonas); ?>;
+   console.log(arrayPersonas)
+   $('#datosOcultos')[0].innerHTML=arrayPersonas;
+</script>
 </body>
 
 </html>

@@ -29,10 +29,25 @@ function enviarFiltro() {
 function generarInforme(d) {
     // Default export is a4 paper, portrait, using milimeters for units
     var doc = new jsPDF();
-    var tituloPDF = d;
+    var tituloPDFSplit = String(d).split(" ");
+    var tituloPDF = tituloPDFSplit[1] + " " + tituloPDFSplit[2] + " " + tituloPDFSplit[3];
+    var informacionLista = $('#datosOcultos')[0].innerHTML;
+    var informacionListaSplit = informacionLista.split(",");
+    var informacionListaFinal = [];
+    var contador = 1;
+
+    informacionListaSplit.forEach(element => {
+
+        if (contador % 2 != 0) {
+            element = '\n' + element;
+        }
+        informacionListaFinal.push(element);
+        contador++;
+    });
 
     doc.text('Informe de prueba:\n' +
-        '\n*Evento: ' + 'Otros' +
-        '\n*Fechas: ' + d, 10, 10);
+        '\n*Tipo: ' + 'Informe voluntarios' +
+        '\n*Fechas: ' + tituloPDF +
+        '\n' + informacionListaFinal, 10, 10);
     doc.save(tituloPDF + '.pdf')
 }
