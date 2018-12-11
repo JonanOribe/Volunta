@@ -31,7 +31,7 @@ function generarInforme(d) {
     var doc = new jsPDF();
     var tituloPDFSplit = String(d).split(" ");
     var tituloPDF = tituloPDFSplit[1] + " " + tituloPDFSplit[2] + " " + tituloPDFSplit[3];
-    var informacionLista = $('#datosOcultos')[0].innerHTML;
+    var informacionLista = $('#datosOcultosIncidencias')[0].innerHTML;
     var informacionListaSplit = informacionLista.split(",");
     var informacionListaFinal = [];
     var contador = 1;
@@ -46,7 +46,7 @@ function generarInforme(d) {
     });
 
     doc.text('Informe de prueba:\n' +
-        '\n*Tipo: ' + 'Informe voluntarios' +
+        '\n*Tipo: ' + 'Informe incidencias' +
         '\n*Fechas: ' + tituloPDF +
         '\n' + informacionListaFinal, 10, 10);
     doc.save(tituloPDF + '.pdf')

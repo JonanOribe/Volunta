@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Informes eventos</title>
+    <title>Informes incidencias</title>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -28,12 +28,12 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 
-    <script src="./src/informesEventos.js"></script>
-    <link rel="stylesheet" href="./style/informesEventos.css">
+    <script src="./src/informesIncidencias.js"></script>
     <link rel="stylesheet" href="./style/informesEventos.css">
 </head>
 
 <body>
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -94,12 +94,12 @@
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
-                                        <i class="fas fa-align-left"></i>
-                                        <span>Mostrar/Ocultar menu</span>
-                                    </button>
+                                <i class="fas fa-align-left"></i>
+                                <span>Mostrar/Ocultar menu</span>
+                            </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <i class="fas fa-align-justify"></i>
-                                    </button>
+                                <i class="fas fa-align-justify"></i>
+                            </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
@@ -113,37 +113,69 @@
                     </div>
                 </div>
             </nav>
-            <h1>Rellene los campos para solicitar el informe</h1>
+
+            <h1>Descargue el informe de incidencias</h1>
             <div>
                 <div class="row">
                     <div class="column">
-                        <form id="formularioInformesEventos">
-                            <div class="combobox" data-add="true">
-                                Eventos a filtrar:
-                                <select id="seleccionComboBox">
-                                    <option value="todos">Todos</option>
-                                    <option value="conciertos">Conciertos</option>
-                                    <option value="carreras">Carreras</option>
-                                    <option value="charlas">Charlas</option>
-                                    <option value="actividadesMontaña">Actividades montaña</option>
-                                </select>
-                            </div>
-                            <!--.combobox-->
-                    </div>
-                    <div class="column">
-                        <div class="form-group row">
-                            <label for="example-tel-input" class="col-3 col-form-label">Rango de fechas: </label>
-                            <div class="col-9">
-                                <input id="dateTime" type="text" name="datetimes" />
-                            </div>
-                        </div>
+                        <form id="formularioInformesIncidencias">
+
                     </div>
                 </div>
 
 
                 <button type="button" class="btn btn-primary btn-block" onclick="enviarFiltro()">Generar Informe</button>
+                <p id="datosOcultosIncidencias" style="display:none"></p>
                 </form>
             </div>
-</body>
+
+<?php
+      
+      require_once("./php/database.php");
+          
+          //echo "<h3>LISTADO PERSONAS</h3>";
+          
+                     
+         $incidencias = listarIncidencias($con);
+         $listadoIncidencias=[];
+          
+          if(count($incidencias) == 0){
+              echo "<br/>No hay personas<br/>";
+          }
+          else{
+              
+              foreach($incidencias as $incidencia){
+                  //echo "<tr>
+                  //        <td>".$incidencia['tipoIncidencia']."</td>
+                  //        <td>".$incidencia['detalleIncidencia']."</td>
+                  //        
+                  //    </tr>";
+
+                      array_push($listadoIncidencias,$incidencia['tipoIncidencia'],$incidencia['detalleIncidencia']);            
+              }
+
+          }
+          
+          cerrarConexion($con);
+
+          function utf8ize($d) { // convertir a UTF-8
+            if (is_array($d)) {
+                foreach ($d as $k => $v) {
+                    $d[$k] = utf8ize($v);
+                }
+            } else if (is_string ($d)) {
+                return utf8_encode($d);
+            }
+            return $d;
+        }
+          
+          ?>
+
+          <script>
+             var arrayIncidencias=<?= json_encode(utf8ize($listadoIncidencias)); ?>;
+             console.log(arrayIncidencias);
+             $('#datosOcultosIncidencias')[0].innerHTML=arrayIncidencias;
+          </script>
+          </body>
 
 </html>

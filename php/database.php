@@ -48,6 +48,16 @@
 		return $personas;//Devuelvo un array con los datos de todos los usuarios
 	}
 
+	//FUNCIÓN LISTAR INCIDENCIAS
+	function listarIncidencias($con){
+		$result = mysqli_query($con, "select * from incidencia");
+		$incidencias = array();
+		while($fila = mysqli_fetch_array($result)){
+			$incidencias[] = $fila;
+		}
+		return $incidencias;//Devuelvo un array con los datos de todos los usuarios
+	}
+
 	//FUNCIÓN LISTAR COORDINADORES
 	function listarCoordinadores($con){
 
