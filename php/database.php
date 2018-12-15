@@ -21,6 +21,21 @@
 		mysqli_close($con);
 	}
 	
+
+		////////// FUNCIONES CONTROL LOGIN ////////////
+
+		function controlAdmin($con, $dni){
+
+			$result = mysqli_query($con, "select * from coordinador where persona='".$dni."'");
+		$personas = array();
+		while($fila = mysqli_fetch_array($result)){
+			$coordinadores[] = $fila;
+		}
+		return $coordinadores;;
+
+		}
+
+
 	////////////////////////////////////////////// FUNCIONES DE ADMINISTRADOR //////////////////////////////////////////////
 	
 		/*

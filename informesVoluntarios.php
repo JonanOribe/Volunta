@@ -4,7 +4,7 @@
 require_once("php/control_sesion.php");
 require_once("php/database.php");
 	
-	controlSesionAdmin();
+controlSesionAdmin($coordinadores);
 ?>
 <html>
 
