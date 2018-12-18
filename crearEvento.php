@@ -42,6 +42,8 @@ controlSesionAdmin($coordinadores);
 <!--CUIDADO!! Al estar montado en local, sólo funciona si usando XAMPP metes el proyecto Volunta dentro de htdocs!*/-->
 
 <div class="col-xs-7"></div>
+
+
 	<form method='post' action='http://127.0.0.1/Volunta/php/insertarEvento.php'>
 
 		
@@ -66,7 +68,7 @@ controlSesionAdmin($coordinadores);
                 <select class="selectpicker" id="localizacion" name='localizacion' >
                     <?php
                     require_once("php/database.php");
-                    desplegableEventos($con);	        
+                    desplegableLocalizaciones($con);	        
                     ?>
                 </select>
 		        </div>

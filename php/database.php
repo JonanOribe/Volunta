@@ -38,11 +38,9 @@
 
 	////////////////////////////////////////////// FUNCIONES DE ADMINISTRADOR //////////////////////////////////////////////
 	
-		/*
-			FUNCIÓN PARA INSERTAR PERSONA
+	// CREAR PERSONAS: VOLUNTARIOS Y COORDINADORES //
 			
-			ORDEN SQL --> INSERT INTO `persona`(`dni`, `nombre`, `apellidos`, `telefono`, `direccion`, `ciudad`, `email`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])
-	*/
+	
 	function insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $usuario, $contrasenya){
 		mysqli_query($con, "insert into persona values('$dni', '$nombre', '$apellidos', '$telefono', '$direccion', '$ciudad', '$email', '$usuario', '$contrasenya')");
 	}
@@ -86,9 +84,10 @@
 		return $coordinadores;//Devuelvo un array con los datos de todos los coordinadores
 	}
 
+	//FUNCIÓN PARA LISTAR EVENTOS
 	function listarEventos($con){
 
-		$result = mysqli_query($con, "select e.nombre as nombre, l.nombre as lugar, p.nombre as coordinador from lugar l, persona p, coordinador c, evento e where c.persona = p.dni and e.coordinador = c.idcoordinador and e.lugar = l.idlugar;");
+		$result = mysqli_query($con, "select e.idevento as id, e.nombre as nombre, l.nombre as lugar, p.nombre as coordinador from lugar l, persona p, coordinador c, evento e where c.persona = p.dni and e.coordinador = c.idcoordinador and e.lugar = l.idlugar;");
 
 		$coordinadores = array();
 		while($fila = mysqli_fetch_array($result)){
@@ -107,7 +106,7 @@
 		return $localizaciones;//Devuelvo un array con los datos de todos los lugares
 	}
 
-
+	//BUSCAR PERSONA
 	function obtenerPersona($con, $dni){
 		$resultado = mysqli_query($con, "select * from persona where dni='$dni'");
 		if(mysqli_num_rows($resultado)==0){
@@ -119,10 +118,12 @@
 		}
 	}
 	
+	//MODIFICAR DATOS PERSONA
 	function modificarPersona($con, $dni, $apellido, $tipo_usuario){
 		mysqli_query($con, "update persona set apellido='$apellido', tipo_usuario=$tipo_usuario where dni='$dni'");
 	}
 	
+	//ELIMINAR PERSONA
 	function borrarPersona($con, $dni){
 		mysqli_query($con, "delete from persona where dni='$dni'");
 	}
@@ -132,22 +133,25 @@
 	
 	////////////////////////////////////////////// FUNCIONES DE EVENTOS //////////////////////////////////////////////
 	
+	
+	//CREAR LOCALIZACIÓN
 	function insertarLocalizacion($con, $nombreLugar, $longitud, $latitud){
 		mysqli_query($con, "insert into lugar(nombre, longitud, latitud) values('$nombreLugar', '$longitud', '$latitud')");
 	}
-
+	//CREAR INCIDENCIAS
 	function insertarIncidencia($con, $tipoIncidencia, $detalleIncidencia){
 		mysqli_query($con, "insert into incidencia(incidencia,comentario) values('$tipoIncidencia', '$detalleIncidencia')");
 	}
-
+	//CREAR EVENTO
 	function insertarEvento($con, $coordinador, $lugar, $nombre, $dia, $tipo, $estado){
 		mysqli_query($con, "insert into evento(coordinador, lugar, nombre, dia, tipo, estado) values('$coordinador', '$lugar', '$nombre', '$dia', '$tipo', '$estado')");
 	}
 
 
-		//consulta para desplegable de coordinadores
+		////// desplegable formulario creación de eventos //////
 
-		function desplegableEventos($con){
+			//localizaciones//
+		function desplegableLocalizaciones($con){
 			$consulta2 = "select idlugar, nombre FROM lugar;";
 			$resultado2 = mysqli_query($con, $consulta2);
 	
@@ -159,7 +163,7 @@
 	
 		}
 
-		//consulta para desplegable de coordinadores
+			//coordinadores//
 
 		function desplegableCoordinadores($con){
 			$consulta1 = "select coordinador.idcoordinador, persona.nombre, persona.apellidos
@@ -174,12 +178,43 @@
 	
 		}
 
-/*
-	function insertarEvento($con, $nombre){
-		mysqli_query($con, "insert into evento (nombre, latitud, longitud) values('$nombre', '$latitud', '$longitud')");
-	}
-	
+	//BORRAR EVENTO
 
+	function borrarEvento($con, $id){
+		mysqli_query($con, "delete from evento where id=$id");
+	}
+
+	
+	//APUNTARSE A UN EVENTO
+
+	function voluntarioEvento($con, $idvoluntario, $idevento){
+		mysqli_query($con, "insert into evento_voluntario(voluntario,evento) values('$idvoluntario', '$idevento')");
+
+	}
+
+
+	//VER APUNTADOS A EVENTOS
+
+		// 
+	
+		function inscritosEvento($con, $idevento){
+			mysqli_query($con, "select p.nombre, e.nombre from persona p, voluntario v, evento e, evento_voluntario ev where v.persona = p.dni and ev.voluntario = v.idvoluntario and ev.evento = e.idevento and ev.evento = '$idevento';");
+
+		}
+
+	//VER EVENTOS DE UN VOLUNTARIO
+
+	function voluntarioInscripciones($con, $idvoluntario){
+		mysqli_query($con, "select p.nombre, e.nombre from persona p, voluntario v, evento e, evento_voluntario ev where v.persona = p.dni and ev.voluntario = v.idvoluntario and ev.evento = e.idevento and ev.evento = '$idvoluntario';");
+
+	}
+
+
+
+
+
+
+/*
 	function modificarEventoNombre($con, $id, $nombre){
 		mysqli_query($con, "update evento set nombre='$nombre' where id=$id");
 	}
@@ -192,9 +227,7 @@
 		mysqli_query($con, "update evento set nombre='$longitud' where id=$id");
 	}
 	
-	function borrarEvento($con, $id){
-		mysqli_query($con, "delete from evento where id=$id");
-	}
+
 	*/
 	
 	////////////////////////////////////////////// PRUEBAS //////////////////////////////////////////////
