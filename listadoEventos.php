@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+require_once("php/control_sesion.php");
+require_once("php/database.php");
+	
+controlSesionAdmin($coordinadores);
+?>
 <html>
 
 <head>
@@ -127,15 +133,19 @@
             </div>
             <table id="myTable">
                 <tr class="header">
-                    <th style="width:25%;">Evento</th>
-                    <th style="width:25%;">Localización</th>
-                    <th style="width:25%;">Coordinador</th>
-                    <th style="width:25%;">Más información</th>
+                <th style="width:20%;">ID</th>
+                    <th style="width:20%;">Evento</th>
+                    <th style="width:20%;">Localización</th>
+                    <th style="width:20%;">Coordinador</th>
+                    <th style="width:10%;">Más información</th>
+                    <th style="width:10%;">Más información</th>
                 </tr>
                 <?php
       
       require_once("./php/database.php");
-          
+         
+         
+          echo $dni;
           echo "<h3>LISTADO EVENTOS</h3>";
           
                      
@@ -147,13 +157,19 @@
           else{
               
               foreach($eventos as $evento){
+
+                    $id_evento=$evento['id'];
+                    $num_evento= 1;
                   echo "<tr>
+                          <td id= evento".$id_evento.">".$id_evento."</td>
                           <td>".$evento['nombre']."</td>
                           <td>".$evento['lugar']."</td>
                           <td>".$evento['coordinador']."</td>
                           <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-                          
-                      </tr>";
+                          <td><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
+                     </tr>";
+
+                    $num_evento++;
               }
 
           }
