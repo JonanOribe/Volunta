@@ -66,7 +66,7 @@
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a onclick="location.href='index.html';" class="article">Log out</a>
+                    <a onclick="location.href='index.php';" class="article">Log out</a>
                 </li>
             </ul>
         </nav>

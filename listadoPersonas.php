@@ -51,7 +51,7 @@ require_once("php/database.php");
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a class="botonLateralEventos" href="#" onclick="tablaEventosAdministrador()">Eventos</a>
+                        <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';" >Eventos</a>
                         </li>
                         <li>
                             <a href="#">Voluntarios</a>
@@ -86,7 +86,7 @@ require_once("php/database.php");
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a onclick="location.href='index.html';" class="article">Log out</a>
+                    <a onclick="location.href='index.php';" class="article">Log out</a>
                 </li>
             </ul>
         </nav>

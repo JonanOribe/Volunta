@@ -51,7 +51,7 @@ controlSesionAdmin($coordinadores);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#" >Eventos</a>
+                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';" >Eventos</a>
                         </li>
                         <li>
                             <a onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Voluntarios</a>
@@ -86,7 +86,7 @@ controlSesionAdmin($coordinadores);
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a onclick="location.href='index.html';" class="article">Log out</a>
+                    <a onclick="location.href='index.php';" class="article">Log out</a>
                 </li>
             </ul>
         </nav>
@@ -129,7 +129,7 @@ controlSesionAdmin($coordinadores);
             </div>
             <br/>
             <div id="campoBusqueda">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por nombre.." title="Type in a name">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por evento.." title="Type in a name">
             </div>
             <table id="myTable">
                 <tr class="header">
@@ -150,9 +150,10 @@ controlSesionAdmin($coordinadores);
           
                      
          $eventos = listarEventos($con);
+         $lugares = listarLocalizaciones($con);
           
           if(count($eventos) == 0){
-              echo "<br/>No hay personas<br/>";
+              echo "<br/>No hay eventos<br/>";
           }
           else{
               
@@ -173,6 +174,29 @@ controlSesionAdmin($coordinadores);
               }
 
           }
+
+          if(count($lugares) == 0){
+            echo "<br/>No hay lugares<br/>";
+        }
+        else{
+            
+            foreach($lugares as $lugar){
+
+                  $id_lugar=$lugar['idlugar'];
+                  $num_lugar= 1;
+                echo "<tr>
+                        <td id= evento".$id_lugar.">".$id_lugar."</td>
+                        <td>".$lugar['nombre']."</td>
+                        <td>".$lugar['longitud']."</td>
+                        <td>".$lugar['latitud']."</td>
+                        <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
+                        <td><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
+                   </tr>";
+
+                  $num_lugar++;
+            }
+
+        }
           
           cerrarConexion($con);
           
