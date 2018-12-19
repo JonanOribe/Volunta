@@ -23,10 +23,10 @@ require_once("php/database.php");
             $result2 = mysqli_query($con, "select * from coordinador where persona='".$_SESSION['dni']."'");
 
 		if(mysqli_num_rows($result2)==0){
-			header("Location: vistaPrincipalVoluntario.html");
+			header("Location: vistaPrincipalVoluntario.php");
 		}
 		else{
-			header("Location: vistaAdministrador.html");
+			header("Location: listadoEventos.php");
 		}
 
 			

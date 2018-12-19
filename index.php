@@ -31,7 +31,8 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
 
-            <button class="buttonColor" type="submit" onclick="location.href='vistaPrincipalVoluntario.html';">Login</button>
+            <!--<button class="buttonColor" type="submit" onclick="location.href='vistaPrincipalVoluntario.html';">Login</button>-->
+            <button class="buttonColor" type="submit" onclick="location.href='listadoEventos.php';">Login</button>
             <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
