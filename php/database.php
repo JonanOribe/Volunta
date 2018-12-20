@@ -24,15 +24,26 @@
 
 		////////// FUNCIONES CONTROL LOGIN ////////////
 
+		// control admin //
 		function controlAdmin($con, $dni){
 
 			$result = mysqli_query($con, "select * from coordinador where persona='".$dni."'");
-		$personas = array();
+		
 		while($fila = mysqli_fetch_array($result)){
 			$coordinadores[] = $fila;
 		}
-		return $coordinadores;;
+		return $coordinadores;
+		}
 
+			// control voluntario //
+		function controlVoluntario($con, $dni){
+
+			$resultado = mysqli_query($con, "select * from voluntario where persona='".$dni."'");
+
+		while($fila = mysqli_fetch_array($resultado)){
+			$voluntarios[] = $fila;
+		}
+		return $voluntarios;
 		}
 
 
