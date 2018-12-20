@@ -133,19 +133,16 @@ controlSesionAdmin($coordinadores);
             </div>
             <table id="myTable">
                 <tr class="header">
-                <th style="width:20%;">ID</th>
+                    <th style="width:20%;">ID</th>
                     <th style="width:20%;">Evento</th>
                     <th style="width:20%;">Localización</th>
                     <th style="width:20%;">Coordinador</th>
-                    <th style="width:10%;">Más información</th>
-                    <th style="width:10%;">Más información</th>
+                    <th style="width:20%;">Más información</th>
                 </tr>
                 <?php
       
       require_once("./php/database.php");
-         
-         
-          echo $dni;
+
           echo "<h3>LISTADO EVENTOS</h3>";
           
                      
@@ -167,7 +164,6 @@ controlSesionAdmin($coordinadores);
                           <td>".$evento['lugar']."</td>
                           <td>".$evento['coordinador']."</td>
                           <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-                          <td><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
                      </tr>";
 
                     $num_evento++;
