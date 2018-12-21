@@ -133,24 +133,22 @@ controlSesionAdmin($coordinadores);
             </div>
             <table id="myTable">
                 <tr class="header">
-                <th style="width:20%;">ID</th>
+                    <th style="width:20%;">ID</th>
                     <th style="width:20%;">Evento</th>
                     <th style="width:20%;">Localización</th>
                     <th style="width:20%;">Coordinador</th>
-                    <th style="width:10%;">Más información</th>
-                    <th style="width:10%;">Más información</th>
+                    <th style="width:20%;">Más información</th>
                 </tr>
                 <?php
       
       require_once("./php/database.php");
-         
-         
-          echo $dni;
+
           echo "<h3>LISTADO EVENTOS</h3>";
           
                      
          $eventos = listarEventos($con);
          $lugares = listarLocalizaciones($con);
+
          $eventosYLugares=listarEventosYLugares($con);
 
          if(count($eventosYLugares) == 0){
