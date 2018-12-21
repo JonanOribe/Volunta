@@ -19,12 +19,14 @@ function addRowHandlers() {
             function(row) {
                 return function() {
                     var datos = [];
-                    var tituloEvento = row.getElementsByTagName("td")[0].innerHTML;
-                    var organizador = row.getElementsByTagName("td")[1].innerHTML;
-                    var tipoEvento = row.getElementsByTagName("td")[2].innerHTML;
-                    var participantes = row.getElementsByTagName("td")[3].innerHTML;
+                    var tituloEvento = row.getElementsByTagName("td")[1].innerHTML;
+                    var organizador = row.getElementsByTagName("td")[3].innerHTML;
+                    //var tipoEvento = row.getElementsByTagName("td")[2].innerHTML;
+                    //var participantes = row.getElementsByTagName("td")[3].innerHTML;
+                    var longitud = row.getElementsByTagName("td")[6].innerHTML;
+                    var latitud = row.getElementsByTagName("td")[7].innerHTML;
 
-                    datos.push(tituloEvento, organizador, tipoEvento, participantes);
+                    datos.push(tituloEvento, organizador, longitud, latitud);
 
                     launchInfo(datos);
                 };
@@ -43,8 +45,10 @@ function launchInfo(datos) {
     document.getElementById('informacionEvento').style.display = 'block';
     document.getElementById('tituloEvento').innerHTML = "Titulo evento: " + datos[0];
     document.getElementById('organizador').innerHTML = "Organizador: " + datos[1];
-    document.getElementById('tipoEvento').innerHTML = "Tipo evento: " + datos[2];
-    document.getElementById('participantes').innerHTML = "Participantes: " + datos[3];
+    //document.getElementById('tipoEvento').innerHTML = "Tipo evento: " + datos[2];
+    //document.getElementById('participantes').innerHTML = "Participantes: " + datos[3];
+    document.getElementById('longitud').innerHTML = "Tipo evento: " + datos[2];
+    document.getElementById('latitud').innerHTML = "Participantes: " + datos[3];
 }
 
 //MODAL

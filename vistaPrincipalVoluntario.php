@@ -66,7 +66,7 @@
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a onclick="location.href='index.html';" class="article">Log out</a>
+                    <a onclick="location.href='index.php';" class="article">Log out</a>
                 </li>
             </ul>
         </nav>
@@ -111,7 +111,6 @@
                 <div class="w3-bar w3-border-bottom">
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tituloEvento');recargarInfo()">Título evento</button>
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion2');cargarMapa()">Mapa</button>
-                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion3')">Sección 3</button>
                 </div>
 
                 <div id="informacionEvento" class="w3-container city">
@@ -127,11 +126,6 @@
                     <div id="espacioMapa">
 
                     </div>
-                </div>
-
-                <div id="seccion3" class="w3-container city">
-                    <h1>Sección 3</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
 
                 <div class="w3-container w3-light-grey w3-padding">

@@ -51,7 +51,7 @@ controlSesionAdmin($coordinadores);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#" >Eventos</a>
+                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';" >Eventos</a>
                         </li>
                         <li>
                             <a onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Voluntarios</a>
@@ -86,7 +86,7 @@ controlSesionAdmin($coordinadores);
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a onclick="location.href='index.html';" class="article">Log out</a>
+                    <a onclick="location.href='index.php';" class="article">Log out</a>
                 </li>
             </ul>
         </nav>
@@ -129,7 +129,7 @@ controlSesionAdmin($coordinadores);
             </div>
             <br/>
             <div id="campoBusqueda">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por nombre.." title="Type in a name">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por evento.." title="Type in a name">
             </div>
             <table id="myTable">
                 <tr class="header">
@@ -150,30 +150,34 @@ controlSesionAdmin($coordinadores);
           
                      
          $eventos = listarEventos($con);
-          
-          if(count($eventos) == 0){
-              echo "<br/>No hay personas<br/>";
-          }
-          else{
-              
-              foreach($eventos as $evento){
+         $lugares = listarLocalizaciones($con);
+         $eventosYLugares=listarEventosYLugares($con);
 
-                    $id_evento=$evento['id'];
-                    $num_evento= 1;
-                  echo "<tr>
-                          <td id= evento".$id_evento.">".$id_evento."</td>
-                          <td>".$evento['nombre']."</td>
-                          <td>".$evento['lugar']."</td>
-                          <td>".$evento['coordinador']."</td>
-                          <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-                          <td><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
-                     </tr>";
+         if(count($eventosYLugares) == 0){
+            echo "<br/>No hay eventos<br/>";
+        }
+        else{
+            
+            foreach($eventosYLugares as $eventoyLugar){
 
-                    $num_evento++;
-              }
+                  $id_eventoYLugar=$eventoyLugar['idevento'];
+                  $num_eventoYLugar= 1;
+                echo "<tr>
+                        <td id= evento".$id_eventoYLugar.">".$id_eventoYLugar."</td>
+                        <td>".$eventoyLugar['evento']."</td>
+                        <td>".$eventoyLugar['lugar']."</td>
+                        <td>".$eventoyLugar['coordinador']."</td>
+                        <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
+                        <td><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
+                        <td style='display: none;'>".$eventoyLugar['longitud']."</td>
+                        <td style='display: none;'>".$eventoyLugar['latitud']."</td>
+                   </tr>";
 
-          }
-          
+                  $num_eventoYLugar++;
+            }
+
+        }
+                  
           cerrarConexion($con);
           
 ?>
@@ -206,6 +210,8 @@ controlSesionAdmin($coordinadores);
                     <p id="organizador"></p>
                     <p id="tipoEvento"></p>
                     <p id="participantes"></p>
+                    <p id="longitud" style='display: none;'></p>
+                    <p id="latitud" style='display: none;'></p>
                 </div>
 
                 <div id="seccion2" class="w3-container city">

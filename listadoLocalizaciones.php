@@ -51,7 +51,7 @@ controlSesionAdmin($coordinadores);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a class="botonLateralEventos" href="#" onclick="tablaEventosAdministrador()">Eventos</a>
+                        <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';" >Eventos</a>
                         </li>
                         <li>
                             <a onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Voluntarios</a>
@@ -86,7 +86,7 @@ controlSesionAdmin($coordinadores);
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a onclick="location.href='index.html';" class="article">Log out</a>
+                    <a onclick="location.href='index.php';" class="article">Log out</a>
                 </li>
             </ul>
         </nav>
@@ -183,7 +183,6 @@ controlSesionAdmin($coordinadores);
                 <div class="w3-bar w3-border-bottom">
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tituloEvento');recargarInfo()">Título evento</button>
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion2');cargarMapa()">Mapa</button>
-                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion3')">Sección 3</button>
                 </div>
 
                 <div id="informacionEvento" class="w3-container city">
@@ -199,11 +198,6 @@ controlSesionAdmin($coordinadores);
                     <div id="espacioMapa">
 
                     </div>
-                </div>
-
-                <div id="seccion3" class="w3-container city">
-                    <h1>Sección 3</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
 
                 <div class="w3-container w3-light-grey w3-padding">

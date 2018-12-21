@@ -106,6 +106,28 @@
 		return $localizaciones;//Devuelvo un array con los datos de todos los lugares
 	}
 
+	//FUNCIÓN LISTAR LOCALIZACIONES CON LUGARES
+		function listarEventosYLugares($con){
+			$result = mysqli_query($con, "SELECT idevento,evento.nombre as evento,lugar.nombre as lugar,persona.nombre as coordinador,lugar.longitud,lugar.latitud FROM `evento` JOIN lugar ON evento.lugar=lugar.idlugar JOIN coordinador ON evento.coordinador=coordinador.idcoordinador JOIN persona ON coordinador.persona=persona.dni");
+			$localizaciones = array();
+			while($fila = mysqli_fetch_array($result)){
+				$localizaciones[] = $fila;
+			}
+			return $localizaciones;//Devuelvo un array con los datos de todos los lugares
+		}
+
+	//BUSCAR LOCALIZACIÓN
+	function obtenerLocalizacion($con, $lugar){
+		$resultado = mysqli_query($con, "select * from lugar where nombre='$lugar'");
+		if(mysqli_num_rows($resultado)==0){
+			return 0; //Si no existe el lugar devuelvo 0
+		}
+		else{
+			$lugar = mysqli_fetch_array($resultado);
+			return $lugar;//Si existe el lugar devuelvo un array con sus datos
+		}
+	}
+
 	//BUSCAR PERSONA
 	function obtenerPersona($con, $dni){
 		$resultado = mysqli_query($con, "select * from persona where dni='$dni'");

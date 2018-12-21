@@ -67,8 +67,8 @@ function crearVis(myJson) {
     var respuestaLlamada = [];
     respuestaLlamada = myJson;
     //console.log({respuestaLlamada});
-    var matriculas = respuestaLlamada.map(function(vehiculo) { return respuestaLlamada[truck].tituloEvento + " " + respuestaLlamada[truck].organizador + " " + respuestaLlamada[truck].tipoEvento });
-    var unique = matriculas.filter(onlyUnique);
+    var eventos = respuestaLlamada.map(function(vehiculo) { return respuestaLlamada[truck].tituloEvento + " " + respuestaLlamada[truck].organizador + " " + respuestaLlamada[truck].tipoEvento });
+    var unique = eventos.filter(onlyUnique);
     console.log({ unique })
     var numberOfGroups = unique.length;
     var groups = new vis.DataSet();
