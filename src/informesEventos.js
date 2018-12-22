@@ -22,19 +22,32 @@ $(function() {
 });
 
 function enviarFiltro() {
-    var dataComboBoxEnvio = $('#seleccionComboBox').find('option:selected').text();
-    var dataCalendarEnvio = $('#dateTime')[0].value;
-    console.log({ dataComboBoxEnvio, dataCalendarEnvio });
-    generarInforme(dataComboBoxEnvio, dataCalendarEnvio);
+    var d = new Date();
+    generarInforme(d);
 }
 
-function generarInforme(dataComboBoxEnvio, dataCalendarEnvio) {
+function generarInforme(d) {
     // Default export is a4 paper, portrait, using milimeters for units
     var doc = new jsPDF();
-    var tituloPDF = dataComboBoxEnvio + "/" + dataCalendarEnvio;
+    var tituloPDFSplit = String(d).split(" ");
+    var tituloPDF = tituloPDFSplit[1] + " " + tituloPDFSplit[2] + " " + tituloPDFSplit[3];
+    var informacionLista = $('#datosOcultosEventos')[0].innerHTML;
+    var informacionListaSplit = informacionLista.split(",");
+    var informacionListaFinal = [];
+    var contador = 1;
+
+    informacionListaSplit.forEach(element => {
+
+        if (contador % 2 != 0) {
+            element = '\n' + element;
+        }
+        informacionListaFinal.push(element);
+        contador++;
+    });
 
     doc.text('Informe de prueba:\n' +
-        '\n*Evento: ' + dataComboBoxEnvio +
-        '\n*Fechas: ' + dataCalendarEnvio, 10, 10);
+        '\n*Tipo: ' + 'Informe eventos' +
+        '\n*Fechas: ' + tituloPDF +
+        '\n' + informacionListaFinal, 10, 10);
     doc.save(tituloPDF + '.pdf')
 }

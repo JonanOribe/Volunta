@@ -5,7 +5,7 @@ $(function() {
 
 function tablaEventosAdministrador() {
 
-   /* $('#myTable tr').remove();
+    $('#myTable tr').remove();
     $('#myTable tbody').remove();
     $('#myTable thead').remove();
     $('#campoBusqueda input').remove();
@@ -27,5 +27,5 @@ function tablaEventosAdministrador() {
 
     content += "</table>"
 
-    $('#myTable').append(content);*/
+    $('#myTable').append(content);
 }

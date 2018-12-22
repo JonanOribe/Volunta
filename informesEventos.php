@@ -30,7 +30,6 @@
 
     <script src="./src/informesEventos.js"></script>
     <link rel="stylesheet" href="./style/informesEventos.css">
-    <link rel="stylesheet" href="./style/informesEventos.css">
 </head>
 
 <body>
@@ -113,10 +112,10 @@
                     </div>
                 </div>
             </nav>
-            <h1>Rellene los campos para solicitar el informe</h1>
+            <h1>Haga click para generar el informe</h1>
             <div>
                 <div class="row">
-                    <div class="column">
+                    <div class="column" style="visibility: hidden">
                         <form id="formularioInformesEventos">
                             <div class="combobox" data-add="true">
                                 Eventos a filtrar:
@@ -130,7 +129,7 @@
                             </div>
                             <!--.combobox-->
                     </div>
-                    <div class="column">
+                    <div class="column" style="visibility: hidden">
                         <div class="form-group row">
                             <label for="example-tel-input" class="col-3 col-form-label">Rango de fechas: </label>
                             <div class="col-9">
@@ -142,8 +141,57 @@
 
 
                 <button type="button" class="btn btn-primary btn-block" onclick="enviarFiltro()">Generar Informe</button>
+                <p id="datosOcultosEventos" style="display:none"></p>
                 </form>
             </div>
+
+            <?php
+      
+      require_once("./php/database.php");
+          
+          //echo "<h3>LISTADO PERSONAS</h3>";
+          
+                     
+         $eventos = listarEventos($con);
+         $listadoEventos=[];
+          
+          if(count($eventos) == 0){
+              echo "<br/>No hay personas<br/>";
+          }
+          else{
+              
+              foreach($eventos as $evento){
+                  //echo "<tr>
+                  //        <td>".$incidencia['tipoIncidencia']."</td>
+                  //        <td>".$incidencia['detalleIncidencia']."</td>
+                  //        
+                  //    </tr>";
+
+                      array_push($listadoEventos,$evento['nombre'],$evento['lugar']);            
+              }
+
+          }
+          
+          cerrarConexion($con);
+
+          function utf8ize($d) { // convertir a UTF-8
+            if (is_array($d)) {
+                foreach ($d as $k => $v) {
+                    $d[$k] = utf8ize($v);
+                }
+            } else if (is_string ($d)) {
+                return utf8_encode($d);
+            }
+            return $d;
+        }
+          
+          ?>
+
+          <script>
+             var arrayEventos=<?= json_encode(utf8ize($listadoEventos)); ?>;
+             console.log(arrayEventos);
+             $('#datosOcultosEventos')[0].innerHTML=arrayEventos;
+          </script>
 </body>
 
 </html>

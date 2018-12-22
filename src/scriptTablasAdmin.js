@@ -90,9 +90,7 @@ function tablaEventosAdministrador() {
     $('#myTable thead').remove();
     $('#campoBusqueda input').remove();
     $('#myInput').remove();
-
     var contentInput = '<input type="text" id="myInput" onkeyup="busquedaDatos()" placeholder="Busqueda por título evento.." title="Type in a name">';
-
     $('#campoBusqueda').append(contentInput);
 
     var content = '<thead><tr><th>Título evento</th><th>Organizador</th><th>Tipo evento</th><th>Participantes</th><th>Disponibilidad</th><th>Más información</th></tr></thead><tbody>';
