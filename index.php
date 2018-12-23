@@ -32,21 +32,19 @@
             <input type="password" placeholder="Enter Password" name="psw" required>
 
             <!--<button class="buttonColor" type="submit" onclick="location.href='vistaPrincipalVoluntario.html';">Login</button>-->
-            <button class="buttonColor" type="submit" onclick="location.href='listadoEventos.php';">Login</button>
+            <button class="buttonColor" type="submit" onclick="location.href='login.php';">Login</button>
             <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
         </div>
-<!--
+
         <div class="container" style="background-color:#f1f1f1">
-            <button class="buttonColor" type="button" onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">MODO ADMIN</button>
             <button type="button" class="cancelbtn">Cancel</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
-
-        -->
     </form>
 
 </body>
 
 </html>
+
