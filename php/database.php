@@ -24,15 +24,26 @@
 
 		////////// FUNCIONES CONTROL LOGIN ////////////
 
+		// control admin //
 		function controlAdmin($con, $dni){
 
 			$result = mysqli_query($con, "select * from coordinador where persona='".$dni."'");
-		$personas = array();
+		
 		while($fila = mysqli_fetch_array($result)){
 			$coordinadores[] = $fila;
 		}
-		return $coordinadores;;
+		return $coordinadores;
+		}
 
+			// control voluntario //
+		function controlVoluntario($con, $dni){
+
+			$resultado = mysqli_query($con, "select * from voluntario where persona='".$dni."'");
+
+		while($fila = mysqli_fetch_array($resultado)){
+			$voluntarios[] = $fila;
+		}
+		return $voluntarios;
 		}
 
 
@@ -106,16 +117,6 @@
 		return $localizaciones;//Devuelvo un array con los datos de todos los lugares
 	}
 
-	//FUNCIÓN LISTAR LOCALIZACIONES CON LUGARES
-		function listarEventosYLugares($con){
-			$result = mysqli_query($con, "SELECT idevento,evento.nombre as evento,lugar.nombre as lugar,persona.nombre as coordinador,lugar.longitud,lugar.latitud FROM `evento` JOIN lugar ON evento.lugar=lugar.idlugar JOIN coordinador ON evento.coordinador=coordinador.idcoordinador JOIN persona ON coordinador.persona=persona.dni");
-			$localizaciones = array();
-			while($fila = mysqli_fetch_array($result)){
-				$localizaciones[] = $fila;
-			}
-			return $localizaciones;//Devuelvo un array con los datos de todos los lugares
-		}
-
 	//BUSCAR LOCALIZACIÓN
 	function obtenerLocalizacion($con, $lugar){
 		$resultado = mysqli_query($con, "select * from lugar where nombre='$lugar'");
@@ -137,6 +138,18 @@
 		else{
 			$persona = mysqli_fetch_array($resultado);
 			return $persona;//Si existe el usuario devuelvo un array con sus datos
+		}
+	}
+
+	function obtenerIdVoluntario($con, $dni){
+		$resultado = mysqli_query($con, "select v.idvoluntario from voluntario v, persona p where p.dni=v.persona and p.dni='$dni'");
+		if(mysqli_num_rows($resultado)==0){
+			return 0; //Si no existe el usuario devuelvo 0
+		}
+		else{
+			$persona = mysqli_fetch_array($resultado);
+			return $persona;
+			
 		}
 	}
 	
