@@ -133,33 +133,27 @@ controlSesionAdmin($coordinadores);
             </div>
             <table id="myTable">
                 <tr class="header">
-                <th style="width:20%;">ID</th>
+                    <th style="width:20%;">ID</th>
                     <th style="width:20%;">Evento</th>
                     <th style="width:20%;">Localización</th>
                     <th style="width:20%;">Coordinador</th>
-                    <th style="width:10%;">Más información</th>
-                    <th style="width:10%;">Más información</th>
+                    <th style="width:20%;">Más información</th>
                 </tr>
                 <?php
       
       require_once("./php/database.php");
-         
-         
-          echo $dni;
           echo "<h3>LISTADO EVENTOS</h3>";
           
                      
          $eventos = listarEventos($con);
          $lugares = listarLocalizaciones($con);
          $eventosYLugares=listarEventosYLugares($con);
-
          if(count($eventosYLugares) == 0){
             echo "<br/>No hay eventos<br/>";
         }
         else{
             
             foreach($eventosYLugares as $eventoyLugar){
-
                   $id_eventoYLugar=$eventoyLugar['idevento'];
                   $num_eventoYLugar= 1;
                 echo "<tr>
@@ -172,10 +166,8 @@ controlSesionAdmin($coordinadores);
                         <td style='display: none;'>".$eventoyLugar['longitud']."</td>
                         <td style='display: none;'>".$eventoyLugar['latitud']."</td>
                    </tr>";
-
                   $num_eventoYLugar++;
             }
-
         }
                   
           cerrarConexion($con);
@@ -201,6 +193,7 @@ controlSesionAdmin($coordinadores);
                 <div class="w3-bar w3-border-bottom">
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tituloEvento');recargarInfo()">Título evento</button>
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion2');cargarMapa()">Mapa</button>
+                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion3')">Sección 3</button>
                 </div>
 
                 <div id="informacionEvento" class="w3-container city">
@@ -218,6 +211,11 @@ controlSesionAdmin($coordinadores);
                     <div id="espacioMapa">
 
                     </div>
+                </div>
+
+                <div id="seccion3" class="w3-container city">
+                    <h1>Sección 3</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
 
                 <div class="w3-container w3-light-grey w3-padding">
@@ -241,6 +239,4 @@ controlSesionAdmin($coordinadores);
 
 </body>
 
-</html>   
-   
-   
+</html> 
