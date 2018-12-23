@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+require_once("php/control_sesion_voluntario.php");
+	
+controlSesionVolun($voluntarios);
+?>
 <html>
 
 <head>
@@ -21,7 +26,7 @@
     <link rel="stylesheet" href="./style/stylesAdmin.css">
     <script src="./src/scriptTablasAdmin.js"></script>
     <script src="./src/vistaAdministrador.js"></script>
-    <script src="./src/vistaPrincipalVoluntario.js"></script>
+    <!--<script src="./src/vistaPrincipalVoluntario.js"></script> -->
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -86,17 +91,63 @@
                     </button>
                 </div>
             </nav>
-            <div id="campoBusqueda">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por nombre.." title="Type in a name">
-            </div>
-            <table id="myTable">
 
-            </table>
+            <div class="container-fluid">
+
+<button type="button" class="btn" id="botonCrearVoluntario" onclick="window.open('http://127.0.0.1/Volunta/crearVoluntario.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Voluntario</button>
+<button type="button" class="btn" id="botonCrearCoordinador" onclick="window.open('http://127.0.0.1/Volunta/crearCoordinador.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Coordinador</button>
+<button type="button" class="btn" id="botonCrearLocalizacion" onclick="window.open('http://127.0.0.1/Volunta/crearLocalizacion.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Localización</button>
+<button type="button" class="btn" id="botonCrearEvento" onclick="window.open('http://127.0.0.1/Volunta/crearEvento.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Evento</button>
+
+<div class="container-fluid">
+</div>
+<br/>
+<div id="campoBusqueda">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por evento.." title="Type in a name">
+</div>
+<table id="myTable">
+<tr class="header">
+<th style="width:20%;">ID</th>
+<th style="width:20%;">Evento</th>
+<th style="width:20%;">Localización</th>
+<th style="width:20%;">Coordinador</th>
+<th style="width:10%;">Más información</th>
+<th style="width:10%;"></th>
+</tr>
+<?php
+require_once("./php/database.php");
+echo $dni;
+echo "<h3>LISTADO EVENTOS</h3>";
+ 
+$eventos = listarEventos($con);
+if(count($eventos) == 0){
+echo "<br/>No hay eventos<br/>";
+}
+else{
+foreach($eventos as $evento){
+$id_evento=$evento['id'];
+$num_evento= 1;
+echo "<tr>
+      <td id= evento".$id_evento.">".$id_evento."</td>
+      <td>".$evento['nombre']."</td>
+      <td>".$evento['lugar']."</td>
+      <td>".$evento['coordinador']."</td>
+      <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
+      <td><button type='button' class='btn btn-info btn-block'><a href='php/apuntarse.php?evento=".$evento['id']."'>Apuntarse</a></button></td>
+ </tr>";
+$num_evento++;
+}
+}
+cerrarConexion($con);
+?>
+</table>
 
 
 
-        </div>
-    </div>
+</div>
+</div>
+
+
 
     <!--MODAL-->
     <div class="w3-container">
@@ -111,6 +162,7 @@
                 <div class="w3-bar w3-border-bottom">
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tituloEvento');recargarInfo()">Título evento</button>
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion2');cargarMapa()">Mapa</button>
+                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion3')">Sección 3</button>
                 </div>
 
                 <div id="informacionEvento" class="w3-container city">
@@ -126,6 +178,11 @@
                     <div id="espacioMapa">
 
                     </div>
+                </div>
+
+                <div id="seccion3" class="w3-container city">
+                    <h1>Sección 3</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
 
                 <div class="w3-container w3-light-grey w3-padding">
