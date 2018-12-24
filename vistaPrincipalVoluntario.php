@@ -50,7 +50,7 @@ controlSesionVolun($voluntarios);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a id="botonLateralEventos" href="#" onclick="location.href='perfilVoluntario.html';">Mi perfil</a>
+                            <a id="botonLateralEventos" href="#" onclick="location.href='perfilVoluntario.php';">Mi perfil</a>
                         </li>
                         <li>
                             <a id="botonLateralEventos" href="#" onclick="tablaEventosAdministrador()">Eventos</a>
@@ -93,12 +93,12 @@ controlSesionVolun($voluntarios);
             </nav>
 
             <div class="container-fluid">
-
+<!--
 <button type="button" class="btn" id="botonCrearVoluntario" onclick="window.open('http://127.0.0.1/Volunta/crearVoluntario.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Voluntario</button>
 <button type="button" class="btn" id="botonCrearCoordinador" onclick="window.open('http://127.0.0.1/Volunta/crearCoordinador.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Coordinador</button>
 <button type="button" class="btn" id="botonCrearLocalizacion" onclick="window.open('http://127.0.0.1/Volunta/crearLocalizacion.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Localización</button>
 <button type="button" class="btn" id="botonCrearEvento" onclick="window.open('http://127.0.0.1/Volunta/crearEvento.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Evento</button>
-
+-->
 <div class="container-fluid">
 </div>
 <br/>

@@ -54,7 +54,7 @@ controlSesionVolun($voluntarios);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a id="botonLateralEventos" href="#" onclick="location.href='perfilVoluntario.html';">Mi perfil</a>
+                            <a id="botonLateralEventos" href="#" onclick="location.href='perfilVoluntario.php';">Mi perfil</a>
                         </li>
                         <li>
                             <a id="botonLateralEventos" href="#" onclick="location.href='vistaPrincipalVoluntario.php';">Eventos</a>
@@ -101,31 +101,67 @@ controlSesionVolun($voluntarios);
                     </button>
                 </div>
             </nav>
+
             <div id="areaPerfil">
                 <div id="perfilCard">
                     <img id="imagenPerfil" src="./img/johnDoe.png" alt="John">
                     <p><button id="perfilButton" style="visibility:hidden">Cambiar</button></p>
                 </div>
                 <div id="perfilCardDatos">
-                    <p>Número Voluntario: <span></span></p>
-                    <p>Nombre: <span></span></p>
-                    <p>Apellidos: <span></span></p>
-                    <p>DNI: <span></span></p>
-                    <p>Teléfono: <span></span></p>
-                    <p>Email: <span></span></p>
+                    <!--<p>Número Voluntario: <span id="numeroVoluntario"></span></p>-->
+                    <p>Nombre: <span id="nombreVoluntario"></span></p>
+                    <p>Apellidos: <span id="apellidosVoluntario"></span></p>
+                    <p>DNI: <span id="dniVoluntario"></span></p>
+                    <p>Teléfono: <span id="telefonoVoluntario"></span></p>
+                    <p>Email: <span id="emailVoluntario"></span></p>
                 </div>
             </div>
-            <div id="campoBusqueda">
+            <!--<div id="campoBusqueda">
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por nombre.." title="Type in a name">
             </div>
             <table id="myTable">
 
-            </table>
-
-
+            </table>-->
 
         </div>
     </div>
+
+    <?php
+      
+      require_once("./php/database.php");
+                               
+         $persona = obtenerPersona($con, $dni);
+          
+          if(count($persona) == 0){
+              echo "<br/>No hay persona<br/>";
+          }
+          
+          cerrarConexion($con);
+
+          function utf8ize($d) { // convertir a UTF-8
+            if (is_array($d)) {
+                foreach ($d as $k => $v) {
+                    $d[$k] = utf8ize($v);
+                }
+            } else if (is_string ($d)) {
+                return utf8_encode($d);
+            }
+            return $d;
+        }
+          
+    ?>
+
+        <script>
+
+             var ObjetoPersona=<?= json_encode(utf8ize($persona)); ?>;
+             console.log(ObjetoPersona);
+             $('#nombreVoluntario')[0].innerHTML=ObjetoPersona.nombre;
+             $("#apellidosVoluntario")[0].innerHTML=ObjetoPersona.apellidos;
+             $("#dniVoluntario")[0].innerHTML=ObjetoPersona.dni;
+             $("#telefonoVoluntario")[0].innerHTML=ObjetoPersona.telefono;
+             $("#emailVoluntario")[0].innerHTML=ObjetoPersona.email;
+           
+          </script>
 
     <!--MODAL-->
     <div class="w3-container">
