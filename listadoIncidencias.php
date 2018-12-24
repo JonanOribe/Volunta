@@ -12,7 +12,7 @@ controlSesionAdmin($coordinadores);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Vista administrador</title>
+    <title>Vista incidencias</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
@@ -51,7 +51,7 @@ controlSesionAdmin($coordinadores);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';" >Eventos</a>
+                        <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';" >Eventos</a>
                         </li>
                         <li>
                             <a onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Voluntarios</a>
@@ -63,7 +63,7 @@ controlSesionAdmin($coordinadores);
                             <a onclick="location.href='http://127.0.0.1/Volunta/listadoLocalizaciones.php';">Localizaciones</a> 
                         </li>
                         <li>
-                        <a onclick="location.href='http://127.0.0.1/Volunta/listadoIncidencias.php';">Incidencias</a> 
+                            <a  onclick="location.href='http://127.0.0.1/Volunta/listadoIncidencias.php';">Incidencias</a>
                         </li>
                     </ul>
                 </li>
@@ -129,48 +129,39 @@ controlSesionAdmin($coordinadores);
             </div>
             <br/>
             <div id="campoBusqueda">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por evento.." title="Type in a name">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por tipo.." title="Type in a name">
             </div>
             <table id="myTable">
                 <tr class="header">
-                    <th style="width:20%;">ID</th>
-                    <th style="width:20%;">Evento</th>
-                    <th style="width:20%;">Localización</th>
-                    <th style="width:20%;">Coordinador</th>
-                    <th style="width:20%;">Más información</th>
-                    <th style="width:10%;display: none;">Inscribirse</th>
+                    <th style="width:20%;">Id_incidencia</th>
+                    <th style="width:40%;">Tipo</th>
+                    <th style="width:40%;">Detalles</th>
                 </tr>
                 <?php
       
       require_once("./php/database.php");
-          echo "<h3>LISTADO EVENTOS</h3>";
+          
+          echo "<h3>LISTADO INCIDENCIAS</h3>";
           
                      
-         $eventos = listarEventos($con);
-         $lugares = listarLocalizaciones($con);
-         $eventosYLugares=listarEventosYLugares($con);
-         if(count($eventosYLugares) == 0){
-            echo "<br/>No hay eventos<br/>";
-        }
-        else{
-            
-            foreach($eventosYLugares as $eventoyLugar){
-                  $id_eventoYLugar=$eventoyLugar['idevento'];
-                  $num_eventoYLugar= 1;
-                echo "<tr>
-                        <td id= evento".$id_eventoYLugar.">".$id_eventoYLugar."</td>
-                        <td>".$eventoyLugar['evento']."</td>
-                        <td>".$eventoyLugar['lugar']."</td>
-                        <td>".$eventoyLugar['coordinador']."</td>
-                        <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-                        <td style='display: none;'><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
-                        <td style='display: none;'>".$eventoyLugar['longitud']."</td>
-                        <td style='display: none;'>".$eventoyLugar['latitud']."</td>
-                   </tr>";
-                  $num_eventoYLugar++;
-            }
-        }
-                  
+         $incidencias = listarIncidencias($con);
+          
+          if(count($incidencias) == 0){
+              echo "<br/>No hay incidencias<br/>";
+          }
+          else{
+              
+              foreach($incidencias as $incidencia){
+                  echo "<tr>
+                          <td>".$incidencia['idincidencia']."</td>
+                          <td>".$incidencia['tipoIncidencia']."</td>
+                          <td>".$incidencia['detalleIncidencia']."</td>
+                          
+                      </tr>";
+              }
+
+          }
+          
           cerrarConexion($con);
           
 ?>
@@ -180,47 +171,6 @@ controlSesionAdmin($coordinadores);
 
         </div>
     </div>
-
-    <!--MODAL-->
-    <div class="w3-container">
-
-        <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-                <header class="w3-container w3-blue">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
-                    <h2>Información</h2>
-                </header>
-
-                <div class="w3-bar w3-border-bottom">
-                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tituloEvento');recargarInfo()">Título evento</button>
-                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion2');cargarMapa()">Mapa</button>
-                </div>
-
-                <div id="informacionEvento" class="w3-container city">
-                    <h1>Información evento</h1>
-                    <p id="tituloEvento"></p>
-                    <p id="organizador"></p>
-                    <p id="tipoEvento"></p>
-                    <p id="participantes"></p>
-                    <p id="longitud" style='display: none;'></p>
-                    <p id="latitud" style='display: none;'></p>
-                </div>
-
-                <div id="seccion2" class="w3-container city">
-                    <h1>Sección mapa</h1>
-                    <div id="espacioMapa">
-
-                    </div>
-                </div>
-
-                <div class="w3-container w3-light-grey w3-padding">
-                    <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Close</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!--FIN MODAL-->
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -234,4 +184,6 @@ controlSesionAdmin($coordinadores);
 
 </body>
 
-</html> 
+</html>   
+   
+   

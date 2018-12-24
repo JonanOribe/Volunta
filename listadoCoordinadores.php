@@ -64,7 +64,7 @@ controlSesionAdmin($coordinadores);
                             <a onclick="location.href='http://127.0.0.1/Volunta/listadoLocalizaciones.php';">Localizaciones</a> 
                         </li>
                         <li>
-                            <a href="#">Incidencias</a>
+                        <a onclick="location.href='http://127.0.0.1/Volunta/listadoIncidencias.php';">Incidencias</a> 
                         </li>
                     </ul>
                 </li>
@@ -73,7 +73,7 @@ controlSesionAdmin($coordinadores);
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Informes</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#" onclick="location.href='informesEventos.html';">Eventos</a>
+                            <a href="#" onclick="location.href='informesEventos.php';">Eventos</a>
                         </li>
                         <li>
                             <a href="#" onclick="location.href='informesVoluntarios.php';">Voluntarios</a>
@@ -109,7 +109,7 @@ controlSesionAdmin($coordinadores);
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li>
-                                <button type="button" class="btn" id="botonVistaGeneral" onclick="location.href='visEstadoEventos.html';">Vista general</button>
+                                <button type="button" class="btn" id="botonVistaGeneral" onclick="location.href='visEstadoEventos.html';" style="visibility:hidden">Vista general</button>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Modo ADMINISTRADOR</a>
