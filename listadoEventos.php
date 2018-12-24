@@ -108,7 +108,7 @@ controlSesionAdmin($coordinadores);
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li>
-                                <button type="button" class="btn" id="botonVistaGeneral" onclick="location.href='visEstadoEventos.html';">Vista general</button>
+                                <button type="button" class="btn" id="botonVistaGeneral" onclick="location.href='visEstadoEventos.html';" style="display:none;">Vista general</button>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">Modo ADMINISTRADOR</a>
@@ -138,6 +138,7 @@ controlSesionAdmin($coordinadores);
                     <th style="width:20%;">Localización</th>
                     <th style="width:20%;">Coordinador</th>
                     <th style="width:20%;">Más información</th>
+                    <th style="width:10%;display: none;">Inscribirse</th>
                 </tr>
                 <?php
       
@@ -162,7 +163,7 @@ controlSesionAdmin($coordinadores);
                         <td>".$eventoyLugar['lugar']."</td>
                         <td>".$eventoyLugar['coordinador']."</td>
                         <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-                        <td><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
+                        <td style='display: none;'><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
                         <td style='display: none;'>".$eventoyLugar['longitud']."</td>
                         <td style='display: none;'>".$eventoyLugar['latitud']."</td>
                    </tr>";
@@ -193,7 +194,6 @@ controlSesionAdmin($coordinadores);
                 <div class="w3-bar w3-border-bottom">
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tituloEvento');recargarInfo()">Título evento</button>
                     <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion2');cargarMapa()">Mapa</button>
-                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion3')">Sección 3</button>
                 </div>
 
                 <div id="informacionEvento" class="w3-container city">
@@ -211,11 +211,6 @@ controlSesionAdmin($coordinadores);
                     <div id="espacioMapa">
 
                     </div>
-                </div>
-
-                <div id="seccion3" class="w3-container city">
-                    <h1>Sección 3</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
 
                 <div class="w3-container w3-light-grey w3-padding">

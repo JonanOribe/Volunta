@@ -34,6 +34,13 @@
 </head>
 
 <body>
+
+<?php
+require_once("php/control_sesion_voluntario.php");
+	
+controlSesionVolun($voluntarios);
+?>
+
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -85,6 +92,10 @@
                         <i class="fas fa-align-left"></i>
                         <span>Mostrar/Ocultar menu</span>
                     </button>
+                    <?php
+                        require_once("./php/database.php");
+                        echo $dni;
+                        ?>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
                     </button>
@@ -93,7 +104,7 @@
             <div id="areaPerfil">
                 <div id="perfilCard">
                     <img id="imagenPerfil" src="./img/johnDoe.png" alt="John">
-                    <p><button id="perfilButton">Cambiar</button></p>
+                    <p><button id="perfilButton" style="visibility:hidden">Cambiar</button></p>
                 </div>
                 <div id="perfilCardDatos">
                     <p>Número Voluntario: <span></span></p>
