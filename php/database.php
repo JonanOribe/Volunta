@@ -151,6 +151,19 @@
 		}
 	}
 
+	//BUSCAR HORAS PERSONA
+	function obtenerHorasPersona($con, $dni){
+		echo $dni;
+		$resultado = mysqli_query($con, "select * from persona JOIN voluntario ON persona.dni=voluntario.persona where dni='$dni'");
+		if(mysqli_num_rows($resultado)==0){
+			return 0; //Si no existe el usuario devuelvo 0
+		}
+		else{
+			$persona = mysqli_fetch_array($resultado);
+			return $persona;//Si existe el usuario devuelvo un array con sus datos
+		}
+	}
+
 	function obtenerIdVoluntario($con, $dni){
 		$resultado = mysqli_query($con, "select v.idvoluntario from voluntario v, persona p where p.dni=v.persona and p.dni='$dni'");
 		if(mysqli_num_rows($resultado)==0){

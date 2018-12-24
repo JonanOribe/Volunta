@@ -34,6 +34,9 @@ controlSesionVolun($voluntarios);
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script src="./src/mapas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
+    <script src="./src/informesPerfilVoluntario.js"></script>
 </head>
 
 <body>
@@ -50,16 +53,16 @@ controlSesionVolun($voluntarios);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a id="botonLateralEventos" href="#" onclick="location.href='perfilVoluntario.php';">Mi perfil</a>
+                            <a class="botonLateralEventos" onclick="location.href='perfilVoluntario.php';">Mi perfil</a>
                         </li>
                         <li>
-                            <a id="botonLateralEventos" href="#" onclick="tablaEventosAdministrador()">Eventos</a>
+                            <a class="botonLateralEventos" onclick="location.href='vistaPrincipalVoluntario.php';">Eventos</a>
                         </li>
                         <li>
-                            <a id="botonLateralEventos" href="#">Mis Eventos</a>
+                            <a class="botonLateralEventos">Mis Eventos</a>
                         </li>
                         <li>
-                            <a href="#">Informe</a>
+                            <a class="botonLateralEventos" onclick="enviarFiltro()">Informe</a>
                         </li>
                         <li>
                             <a href="#" onclick="document.getElementById('id02').style.display='block'">Incidencias</a>
@@ -116,7 +119,6 @@ controlSesionVolun($voluntarios);
 </tr>
 <?php
 require_once("./php/database.php");
-echo $dni;
 echo "<h3>LISTADO EVENTOS</h3>";
  
 $eventos = listarEventos($con);
@@ -137,6 +139,25 @@ echo "<tr>
  </tr>";
 $num_evento++;
 }
+}
+
+
+$personaHoras = obtenerHorasPersona($con, $dni);
+ 
+ if(count($personaHoras) == 0){
+     echo "<br/>No hay persona<br/>";
+ }
+ 
+
+ function utf8ize($d) { // convertir a UTF-8
+   if (is_array($d)) {
+       foreach ($d as $k => $v) {
+           $d[$k] = utf8ize($v);
+       }
+   } else if (is_string ($d)) {
+       return utf8_encode($d);
+   }
+   return $d;
 }
 cerrarConexion($con);
 ?>
@@ -237,6 +258,20 @@ cerrarConexion($con);
             });
         });
     </script>
+
+<div id="datosOcultosUsuario" style="display:none">
+</div>
+            <script>
+
+var ObjetoPersonaHoras=<?= json_encode(utf8ize($personaHoras)); ?>;
+console.log(ObjetoPersonaHoras);
+$('#datosOcultosUsuario')[0].innerHTML="DNI: "+ObjetoPersonaHoras.dni+", Nombre: "+ObjetoPersonaHoras.nombre+", Horas: "+ObjetoPersonaHoras.horas;
+
+
+</script>
+
+
+
 </body>
 
 </html>

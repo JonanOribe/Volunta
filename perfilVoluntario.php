@@ -31,6 +31,9 @@
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script src="./src/mapas.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+
+    <script src="./src/informesPerfilVoluntario.js"></script>
 </head>
 
 <body>
@@ -63,7 +66,7 @@ controlSesionVolun($voluntarios);
                             <a id="botonLateralEventos" href="#">Mis Eventos</a>
                         </li>
                         <li>
-                            <a href="#">Informe</a>
+                        <a class="botonLateralEventos" onclick="enviarFiltro()">Informe</a>
                         </li>
                         <li>
 
@@ -134,23 +137,28 @@ controlSesionVolun($voluntarios);
           
           if(count($persona) == 0){
               echo "<br/>No hay persona<br/>";
-          }
-          
-          cerrarConexion($con);
-
-          function utf8ize($d) { // convertir a UTF-8
-            if (is_array($d)) {
-                foreach ($d as $k => $v) {
-                    $d[$k] = utf8ize($v);
-                }
-            } else if (is_string ($d)) {
-                return utf8_encode($d);
-            }
-            return $d;
+          }          
+        
+        $personaHoras = obtenerHorasPersona($con, $dni);
+            
+        if(count($personaHoras) == 0){
+            echo "<br/>No hay persona<br/>";
         }
+        
+        
+        function utf8ize($d) { // convertir a UTF-8
+          if (is_array($d)) {
+              foreach ($d as $k => $v) {
+                  $d[$k] = utf8ize($v);
+              }
+          } else if (is_string ($d)) {
+              return utf8_encode($d);
+          }
+          return $d;
+        }
+        cerrarConexion($con);
+        ?>
           
-    ?>
-
         <script>
 
              var ObjetoPersona=<?= json_encode(utf8ize($persona)); ?>;
@@ -244,6 +252,17 @@ controlSesionVolun($voluntarios);
             });
         });
     </script>
+
+    <div id="datosOcultosUsuario" style="display:none">
+</div>
+            <script>
+
+var ObjetoPersonaHoras=<?= json_encode(utf8ize($personaHoras)); ?>;
+console.log(ObjetoPersonaHoras);
+$('#datosOcultosUsuario')[0].innerHTML="DNI: "+ObjetoPersonaHoras.dni+", Nombre: "+ObjetoPersonaHoras.nombre+", Horas: "+ObjetoPersonaHoras.horas;
+
+
+</script>
 </body>
 
 </html>
