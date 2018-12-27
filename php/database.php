@@ -107,6 +107,19 @@
 		return $eventos;//Devuelvo un array con los datos de todos los coordinadores
 	}
 
+	//FUNCIÓN PARA LISTAR MISEVENTOS
+
+	function listarMisEventos($con, $dni){
+
+		$result = mysqli_query($con, "select e.idevento as id, e.nombre as nombre, l.nombre as lugar, p.nombre as coordinador from evento e, persona p, coordinador c, lugar l, evento_voluntario ev, voluntario v where c.persona = p.dni and e.coordinador = c.idcoordinador and e.lugar = l.idlugar and ev.evento=e.idevento and ev.voluntario=v.idvoluntario and v.persona='".$dni."';");
+
+		$coordinadores = array();
+		while($fila = mysqli_fetch_array($result)){
+			$eventos[] = $fila;
+		}
+		return $eventos;//Devuelvo un array con los datos de todos los coordinadores
+	}
+
 	//FUNCIÓN LISTAR LOCALIZACIONES
 	function listarLocalizaciones($con){
 		$result = mysqli_query($con, "select * from lugar");

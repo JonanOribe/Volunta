@@ -59,7 +59,7 @@ controlSesionVolun($voluntarios);
                             <a class="botonLateralEventos" onclick="location.href='vistaPrincipalVoluntario.php';">Eventos</a>
                         </li>
                         <li>
-                            <a class="botonLateralEventos" onclick="location.href='listadoMisEventos.php';">Mis Eventos</a>
+                            <a class="botonLateralEventos">Mis Eventos</a>
                         </li>
                         <li>
                             <a class="botonLateralEventos" onclick="enviarFiltro()">Informe</a>
@@ -114,14 +114,15 @@ controlSesionVolun($voluntarios);
 <th style="width:20%;">Evento</th>
 <th style="width:20%;">Localización</th>
 <th style="width:20%;">Coordinador</th>
-<th style="width:10%;">Más información</th>
-<th style="width:10%;">Inscribirse</th>
+<th style="width:20%;">Más información</th>
+
 </tr>
 <?php
 require_once("./php/database.php");
-echo "<h3>LISTADO EVENTOS</h3>";
+echo "<h3>MIS EVENTOS</h3>";
+echo $dni;
  
-$eventos = listarEventos($con);
+$eventos = listarMisEventos($con, $dni);
 if(count($eventos) == 0){
 echo "<br/>No hay eventos<br/>";
 }
@@ -135,7 +136,6 @@ echo "<tr>
       <td>".$evento['lugar']."</td>
       <td>".$evento['coordinador']."</td>
       <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-      <td><button type='button' class='btn btn-info btn-block'><a href='php/apuntarse.php?evento=".$evento['id']."'>Apuntarse</a></button></td>
  </tr>";
 $num_evento++;
 }
