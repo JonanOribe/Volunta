@@ -63,7 +63,7 @@ controlSesionVolun($voluntarios);
                             <a id="botonLateralEventos" href="#" onclick="location.href='vistaPrincipalVoluntario.php';">Eventos</a>
                         </li>
                         <li>
-                            <a id="botonLateralEventos" href="#">Mis Eventos</a>
+                            <a id="botonLateralEventos" href="#" onclick="location.href='listadoMisEventos.php';">Mis Eventos</a>
                         </li>
                         <li>
                         <a class="botonLateralEventos" onclick="enviarFiltro()">Informe</a>
@@ -222,16 +222,23 @@ controlSesionVolun($voluntarios);
 
                 <form class="w3-container" action="/action_page.php">
                     <div class="w3-section">
-                        <label><b>Tipo incidencia</b></label>
-                        <select>
-                            <option value="incidente">Incidente</option>
-                            <option value="horario">Horario</option>
-                            <option value="materiales">Materiales</option>
-                            <option value="otros">Otros</option>
-                          </select>
+                        <label><b>Tipo incidencia: </b></label>
+                        <select id="tipoIncidenciaSeleccionada">
+                                <option value="incidente">Incidente</option>
+                                <option value="horario">Horario</option>
+                                <option value="materiales">Materiales</option>
+                                <option value="otros">Otros</option>
+                              </select>
+                        <label><b>Título evento: </b></label>
+                        <!--Esto debería llegarse con query-->
+                        <select id="tituloEventoSeleccionado">
+                                <option value="concierto">Concierto</option>
+                                <option value="marcha">Marcha</option>
+                                <option value="trekking">Trekking</option>
+                              </select>
                         <p><label><b>Detalle su incidencia:</b></label></p>
-                        <textarea rows="4" cols="65">
-                                </textarea>
+                        <textarea rows="4" cols="65" id="textAreaModal">
+                                    </textarea>
                         <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Enviar</button>
                     </div>
                 </form>
@@ -256,6 +263,30 @@ controlSesionVolun($voluntarios);
     <div id="datosOcultosUsuario" style="display:none">
 </div>
             <script>
+
+            
+    //Globales para SELECTS
+    var tipoIncidenciaSeleccionada;
+    
+    var tituloEventoSeleccionado;
+    //FIN globales para SELECTS
+
+    var textoAreaModal;
+
+function recogerSelects(){
+
+    //Código para SELECTS
+    tipoIncidenciaSeleccionada=$('#tipoIncidenciaSeleccionada').find(":selected").text();
+    console.log(tipoIncidenciaSeleccionada);
+
+    tituloEventoSeleccionado=$('#tituloEventoSeleccionado').find(":selected").text();
+    console.log(tituloEventoSeleccionado);
+    //FIN código para SELECTS
+
+    textoAreaModal=$('#textAreaModal').val();
+    console.log(textoAreaModal);
+
+}
 
 var ObjetoPersonaHoras=<?= json_encode(utf8ize($personaHoras)); ?>;
 console.log(ObjetoPersonaHoras);
