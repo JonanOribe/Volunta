@@ -2,6 +2,7 @@
 
 <?php
 require_once("php/control_sesion_voluntario.php");
+require_once("php/database.php");
 	
 controlSesionVolun($voluntarios);
 ?>
@@ -49,6 +50,29 @@ controlSesionVolun($voluntarios);
 		<ul class="flex-outer">	
 
                     <div class="w3-section">
+
+                                    <label for="coordinador">Coordinador:</label><br>
+                <select class="selectpicker" id="coordinador" name='coordinador' >
+                    <?php
+                    require_once("php/database.php");
+                    desplegableCoordinadores($con);	        
+                    ?>
+                </select>
+		        </div>
+              </li>
+              <li>
+		        <div class="form-group">
+                    
+                <label for="localizacion">Localización:</label><br>
+                <select class="selectpicker" id="localizacion" name='localizacion' >
+                    <?php
+                    require_once("php/database.php");
+                    desplegableLocalizaciones($con);	        
+                    ?>
+                </select>
+		        </div>
+              </li>
+
                         <label><b>Tipo incidencia: </b></label>
                         <select  class="selectpicker" id="tipoIncidenciaSeleccionada" name="tipoIncidenciaSeleccionada">
                                 <option value="incidente">Incidente</option>
