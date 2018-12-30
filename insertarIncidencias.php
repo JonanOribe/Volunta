@@ -49,46 +49,30 @@ controlSesionVolun($voluntarios);
 		
 		<ul class="flex-outer">	
 
-                    <div class="w3-section">
-
-                                    <label for="coordinador">Coordinador:</label><br>
-                <select class="selectpicker" id="coordinador" name='coordinador' >
-                    <?php
-                    require_once("php/database.php");
-                    desplegableCoordinadores($con);	        
-                    ?>
-                </select>
-		        </div>
-              </li>
               <li>
 		        <div class="form-group">
                     
-                <label for="localizacion">Localización:</label><br>
-                <select class="selectpicker" id="localizacion" name='localizacion' >
-                    <?php
-                    require_once("php/database.php");
-                    desplegableLocalizaciones($con);	        
-                    ?>
-                </select>
-		        </div>
-              </li>
-
-                        <label><b>Tipo incidencia: </b></label>
+                <label><b>Tipo incidencia: </b></label>
                         <select  class="selectpicker" id="tipoIncidenciaSeleccionada" name="tipoIncidenciaSeleccionada">
                                 <option value="incidente">Incidente</option>
                                 <option value="horario">Horario</option>
                                 <option value="materiales">Materiales</option>
                                 <option value="otros">Otros</option>
                               </select>
+		        </div>
+              </li>
+              <li>          
                         <label><b>Título evento: </b></label>
                         <!--Esto debería llegarse con query-->
                         <select  class="selectpicker" id="tituloEventoSeleccionado" name="tituloEventoSeleccionado">
-                                <option value="concierto">Concierto</option>
-                                <option value="marcha">Marcha</option>
-                                <option value="trekking">Trekking</option>
+                        <?php
+                    require_once("php/database.php");
+                    desplegableEventos($con);	        
+                    ?>
                               </select>
+             </li>
                         <p><label><b>Detalle su incidencia:</b></label></p>
-                        <textarea rows="4" cols="65" id="textAreaModal">
+                        <textarea rows="4" cols="65" id="textAreaModal" name="textAreaModal">
                                     </textarea>
                     </div>
 				

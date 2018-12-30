@@ -210,8 +210,8 @@
 		mysqli_query($con, "insert into lugar(nombre, longitud, latitud) values('$nombreLugar', '$longitud', '$latitud')");
 	}
 	//CREAR INCIDENCIAS
-	function insertarIncidencia($con, $tipoIncidencia, $detalleIncidencia){
-		mysqli_query($con, "insert into incidencia(incidencia,comentario) values('$tipoIncidencia', '$detalleIncidencia')");
+	function insertarIncidencia($con, $voluntario, $evento, $tipoIncidencia, $detalleIncidencia){
+		mysqli_query($con, "insert into incidencia(voluntario, evento, tipoIncidencia, detalleIncidencia) values('$voluntario', '$evento','$tipoIncidencia', '$detalleIncidencia')");
 	}
 	//CREAR EVENTO
 	function insertarEvento($con, $coordinador, $lugar, $nombre, $dia, $tipo, $estado){
@@ -219,7 +219,7 @@
 	}
 
 
-		////// desplegable formulario creación de eventos //////
+		////// DESPLEGABLES //////
 
 			//localizaciones//
 		function desplegableLocalizaciones($con){
@@ -245,6 +245,20 @@
 				while($fila = mysqli_fetch_array($resultado1)){
 					extract($fila);
 					echo "<option value='$idcoordinador'>$nombre - $apellidos</option>";
+				}
+	
+		}
+
+
+		function desplegableEventos($con){
+			$consulta3 = "select nombre, idevento
+			FROM evento";
+			$resultado3 = mysqli_query($con, $consulta3);
+	
+			
+				while($fila = mysqli_fetch_array($resultado3)){
+					extract($fila);
+					echo "<option value='$idevento'>$nombre</option>";
 				}
 	
 		}
