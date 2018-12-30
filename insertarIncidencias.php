@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 
 <?php
-require_once("php/control_sesion.php");
-require_once("php/database.php");
+require_once("php/control_sesion_voluntario.php");
 	
-controlSesionAdmin($coordinadores);
+controlSesionVolun($voluntarios);
 ?>
 <html>
 	<head>
@@ -12,7 +11,7 @@ controlSesionAdmin($coordinadores);
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
-		<title>Crear Evento</title>
+		<title>Insertar incidencia</title>
 	
 		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	
@@ -44,77 +43,30 @@ controlSesionAdmin($coordinadores);
 <div class="col-xs-7"></div>
 
 
-	<form method='post' action='http://127.0.0.1/Volunta/php/insertarEvento.php'>
+	<form method='post' action='http://127.0.0.1/Volunta/php/insertarIncidenciaUsuario.php'>
 
 		
 		<ul class="flex-outer">	
 
-		      <li>
-		        <div class="form-group">
-                    
-                <label for="coordinador">Coordinador:</label><br>
-                <select class="selectpicker" id="coordinador" name='coordinador' >
-                    <?php
-                    require_once("php/database.php");
-                    desplegableCoordinadores($con);	        
-                    ?>
-                </select>
-		        </div>
-              </li>
-              <li>
-		        <div class="form-group">
-                    
-                <label for="localizacion">Localización:</label><br>
-                <select class="selectpicker" id="localizacion" name='localizacion' >
-                    <?php
-                    require_once("php/database.php");
-                    desplegableLocalizaciones($con);	        
-                    ?>
-                </select>
-		        </div>
-              </li>
-              <li>	
-		        <div class="form-group">
-			        <label for="nombreEvento">Nombre:</label>
-
-				        <input type="text" class="form-control" id="nombreEvento"  name='nombreEvento' placeholder="Asigna un nombre al evento">
-			
-			      </div>
-              </li>
-
-               <li>	
-		        <div class="form-group">
-			        <label for="diaEvento">Dia:</label>
-
-				        <input type="date" class="form-control" id="diaEvento"  name='diaEvento'>
-			
-			      </div>
-              </li>
-                 
-
-
-              <li>	
-		        <div class="form-group">
-			        <label for="tipo">Tipo de Evento:</label><br>
-
-				        <input type="radio" name="tipo" value="concierto" checked> Concierto<br>
-                        <input type="radio" name="tipo" value="conferencia"> Conferencia<br>
-                        <input type="radio" name="tipo" value="mercado"> Mercado<br>
-                        <input type="radio" name="tipo" value="manifestacion"> Manifestación<br>
-			
-			      </div>
-              </li>
-              
-              <li>	
-		        <div class="form-group">
-			        <label for="estado">Estado del Evento:</label><br>
-
-				        <input type="radio" name="estado" value="0" checked> Se necesitan inscripciones<br>
-                        <input type="radio" name="estado" value="1"> Cupo lleno<br>
-
-			
-			      </div>
-              </li>
+                    <div class="w3-section">
+                        <label><b>Tipo incidencia: </b></label>
+                        <select  class="selectpicker" id="tipoIncidenciaSeleccionada" name="tipoIncidenciaSeleccionada">
+                                <option value="incidente">Incidente</option>
+                                <option value="horario">Horario</option>
+                                <option value="materiales">Materiales</option>
+                                <option value="otros">Otros</option>
+                              </select>
+                        <label><b>Título evento: </b></label>
+                        <!--Esto debería llegarse con query-->
+                        <select  class="selectpicker" id="tituloEventoSeleccionado" name="tituloEventoSeleccionado">
+                                <option value="concierto">Concierto</option>
+                                <option value="marcha">Marcha</option>
+                                <option value="trekking">Trekking</option>
+                              </select>
+                        <p><label><b>Detalle su incidencia:</b></label></p>
+                        <textarea rows="4" cols="65" id="textAreaModal">
+                                    </textarea>
+                    </div>
 				
 		      <input type='submit'class="btn btn-primary">
 	
