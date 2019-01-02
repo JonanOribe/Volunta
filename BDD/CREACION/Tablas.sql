@@ -36,13 +36,12 @@ latitud float
 create table evento (
 idevento int auto_increment primary key,
 coordinador int,
-voluntario int,
 lugar int,
 nombre varchar(50),
+diaEvento date,
 tipo varchar(50),
 estado boolean,
 FOREIGN KEY (coordinador) REFERENCES coordinador(idcoordinador),
-FOREIGN KEY (voluntario) REFERENCES voluntario(idvoluntario),
 FOREIGN KEY (lugar) REFERENCES lugar(idlugar)
 );
 

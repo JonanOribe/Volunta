@@ -215,7 +215,7 @@
 	}
 	//CREAR EVENTO
 	function insertarEvento($con, $coordinador, $lugar, $nombre, $dia, $tipo, $estado){
-		mysqli_query($con, "insert into evento(coordinador, lugar, nombre, dia, tipo, estado) values('$coordinador', '$lugar', '$nombre', '$dia', '$tipo', '$estado')");
+		mysqli_query($con, "insert into evento(coordinador, lugar, nombre, diaEvento, tipo, estado) values('$coordinador', '$lugar', '$nombre', '$dia', '$tipo', '$estado')");
 	}
 
 
