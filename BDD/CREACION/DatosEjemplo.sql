@@ -20,8 +20,8 @@ INSERT INTO lugar (idlugar, nombre,longitud,latitud)
 VALUES (1,'Parque de la Ciudadela',41.387650, 2.188079),(2,'Plaza de Tetuan',41.394893, 2.175480),(3,'Jardins del Bosquet dels Encants',41.401700, 2.185761);
 
 
-INSERT INTO evento (idevento,coordinador,voluntario,lugar,nombre,tipo,estado)
-VALUES (1,1,1,1,'Concierto benéfico','Concierto',true),(2,1,2,2,'Carrera recaudación','Carrera',true),(3,2,2,1,'Otros','Charla informativa',true);
+INSERT INTO evento (coordinador,lugar,nombre,diaEvento,tipo,estado)
+VALUES (1,1,'Concierto benéfico','2019-01-05','Concierto',true),(1,2,'Carrera recaudación','2019-02-11','Carrera',true),(2,3,'Otros','2019-06-22','Charla informativa',true);
 
 
 INSERT INTO evento_voluntario (voluntario,evento)
