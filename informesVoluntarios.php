@@ -172,6 +172,14 @@ controlSesionAdmin($coordinadores);
    console.log(arrayPersonas)
    $('#datosOcultos')[0].innerHTML=arrayPersonas;
 </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
 </body>
 
 </html>

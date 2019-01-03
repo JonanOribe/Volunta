@@ -23,8 +23,8 @@ function addRowHandlers() {
                     var organizador = row.getElementsByTagName("td")[3].innerHTML;
                     //var tipoEvento = row.getElementsByTagName("td")[2].innerHTML;
                     //var participantes = row.getElementsByTagName("td")[3].innerHTML;
-                    var longitud = row.getElementsByTagName("td")[6].innerHTML;
-                    var latitud = row.getElementsByTagName("td")[7].innerHTML;
+                    var longitud = row.getElementsByTagName("td")[5].innerHTML;
+                    var latitud = row.getElementsByTagName("td")[6].innerHTML;
 
                     datos.push(tituloEvento, organizador, longitud, latitud);
 

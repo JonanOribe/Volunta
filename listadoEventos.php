@@ -8,7 +8,7 @@ controlSesionAdmin($coordinadores);
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -145,9 +145,6 @@ controlSesionAdmin($coordinadores);
       require_once("./php/database.php");
           echo "<h3>LISTADO EVENTOS</h3>";
           
-                     
-         $eventos = listarEventos($con);
-         $lugares = listarLocalizaciones($con);
          $eventosYLugares=listarEventosYLugares($con);
          if(count($eventosYLugares) == 0){
             echo "<br/>No hay eventos<br/>";

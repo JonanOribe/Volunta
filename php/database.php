@@ -1,11 +1,13 @@
 <?php
+	
 	$server = "localhost";
 	$user = "root";
 	$pass = "";
 	$db = "volunta1";
 
 	$con = mysqli_connect($server, $user, $pass, $db) or die ("Error al conectar con la base de datos");
-	
+	mysqli_set_charset($con, "utf8");    
+
 	function login($con, $usuario, $contrasenya){
 		$result = mysqli_query($con, "select * from persona where usuario='".$usuario."' and contrasenya='".$contrasenya."'");
 		if(mysqli_num_rows($result)==0){
@@ -105,6 +107,16 @@
 			$eventos[] = $fila;
 		}
 		return $eventos;//Devuelvo un array con los datos de todos los coordinadores
+	}
+
+	//FUNCIÓN LISTAR LOCALIZACIONES CON LUGARES
+	function listarMisEventosYLugares($con,$dni){
+		$result = mysqli_query($con, "select DISTINCT e.idevento as id, e.nombre as nombre, l.nombre as lugar, p.nombre as coordinador, l.longitud,l.latitud from evento e, persona p, coordinador c, lugar l, evento_voluntario ev, voluntario v where c.persona = p.dni and e.coordinador = c.idcoordinador and e.lugar = l.idlugar and ev.evento=e.idevento and ev.voluntario=v.idvoluntario and v.persona='".$dni."';");
+		$localizaciones = array();
+		while($fila = mysqli_fetch_array($result)){
+			$localizaciones[] = $fila;
+		}
+		return $localizaciones;//Devuelvo un array con los datos de todos los lugares
 	}
 
 	//FUNCIÓN PARA LISTAR MISEVENTOS
