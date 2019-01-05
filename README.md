@@ -8,12 +8,11 @@ Para poder lanzar las pruebas unitarias es necesario tener la web en un hosting 
 
 npm install
 
-
 #Dependencias Cypress (pruebas unitarias):
 
 Levantar servidor con la extensión Live Server
 
-cd ./node_modules/.bin ./cypress install
+Instalamos cypress navegando a: ./node_modules/.bin donde ejecutamos "cypress install"
 
 Para lanzar los test ./cypress open (Lanza una aplicación Electron externa)
 
