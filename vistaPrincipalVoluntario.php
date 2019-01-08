@@ -26,8 +26,7 @@ controlSesionVolun($voluntarios);
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="./style/stylesAdmin.css">
     <script src="./src/scriptTablasAdmin.js"></script>
-    <script src="./src/vistaAdministrador.js"></script>
-    <!--<script src="./src/vistaPrincipalVoluntario.js"></script> -->
+    <script src="./src/vistaPrincipalVoluntario.js"></script>
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -119,26 +118,29 @@ controlSesionVolun($voluntarios);
 <th style="width:10%;">Inscribirse</th>
 </tr>
 <?php
-require_once("./php/database.php");
-echo "<h3>LISTADO EVENTOS</h3>";
- 
-$eventos = listarEventos($con);
-if(count($eventos) == 0){
-echo "<br/>No hay eventos<br/>";
-}
-else{
-foreach($eventos as $evento){
-$id_evento=$evento['id'];
-$num_evento= 1;
-echo "<tr>
-      <td id= evento".$id_evento.">".$id_evento."</td>
-      <td>".$evento['nombre']."</td>
-      <td>".$evento['lugar']."</td>
-      <td>".$evento['coordinador']."</td>
-      <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-      <td><button type='button' class='btn btn-info btn-block'><a href='php/apuntarse.php?evento=".$evento['id']."'>Apuntarse</a></button></td>
+      require_once("./php/database.php");
+      echo "<h3>LISTADO EVENTOS</h3>";
+      
+     $eventosYLugares=listarEventosYLugares($con);
+     if(count($eventosYLugares) == 0){
+        echo "<br/>No hay eventos<br/>";
+    }
+    else{
+        
+        foreach($eventosYLugares as $eventoyLugar){
+              $id_eventoYLugar=$eventoyLugar['idevento'];
+              $num_eventoYLugar= 1;
+            echo "<tr>
+                    <td id= evento".$id_eventoYLugar.">".$id_eventoYLugar."</td>
+                    <td>".$eventoyLugar['evento']."</td>
+                    <td>".$eventoyLugar['lugar']."</td>
+                    <td>".$eventoyLugar['coordinador']."</td>
+                    <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
+      <td><button type='button' class='btn btn-info btn-block'><a href='php/apuntarse.php?evento=".$id_eventoYLugar."'>Apuntarse</a></button></td>
+      <td style='display: none;'>".$eventoyLugar['longitud']."</td>
+      <td style='display: none;'>".$eventoyLugar['latitud']."</td>
  </tr>";
-$num_evento++;
+ $num_eventoYLugar++;
 }
 }
 
@@ -192,6 +194,8 @@ cerrarConexion($con);
                     <p id="organizador"></p>
                     <p id="tipoEvento"></p>
                     <p id="participantes"></p>
+                    <p id="longitud" style='display: none;'></p>
+                    <p id="latitud" style='display: none;'></p>
                 </div>
 
                 <div id="seccion2" class="w3-container city">

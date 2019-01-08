@@ -192,6 +192,14 @@
              console.log(arrayEventos);
              $('#datosOcultosEventos')[0].innerHTML=arrayEventos;
           </script>
+          
+              <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#sidebarCollapse').on('click', function() {
+                        $('#sidebar').toggleClass('active');
+                    });
+                });
+            </script>
 </body>
 
 </html>

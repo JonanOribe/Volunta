@@ -25,7 +25,7 @@ controlSesionVolun($voluntarios);
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="./style/stylesAdmin.css">
     <script src="./src/scriptTablasAdmin.js"></script>
-    <script src="./src/vistaAdministrador.js"></script>
+    <script src="./src/vistaPrincipalVoluntariosMisEventos.js"></script>
     <!--<script src="./src/vistaPrincipalVoluntario.js"></script> -->
 
     <!-- Font Awesome JS -->
@@ -122,22 +122,25 @@ require_once("./php/database.php");
 echo "<h3>MIS EVENTOS</h3>";
 echo $dni;
  
-$eventos = listarMisEventos($con, $dni);
-if(count($eventos) == 0){
+$eventosYLugares = listarMisEventosYLugares($con, $dni);
+if(count($eventosYLugares) == 0){
 echo "<br/>No hay eventos<br/>";
 }
 else{
-foreach($eventos as $evento){
-$id_evento=$evento['id'];
-$num_evento= 1;
-echo "<tr>
-      <td id= evento".$id_evento.">".$id_evento."</td>
-      <td>".$evento['nombre']."</td>
-      <td>".$evento['lugar']."</td>
-      <td>".$evento['coordinador']."</td>
-      <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
- </tr>";
-$num_evento++;
+        
+    foreach($eventosYLugares as $eventoyLugar){
+          $id_eventoYLugar=$eventoyLugar['id'];
+          $num_eventoYLugar= 1;
+        echo "<tr>
+                <td id= evento".$id_eventoYLugar.">".$id_eventoYLugar."</td>
+                <td>".$eventoyLugar['nombre']."</td>
+                <td>".$eventoyLugar['lugar']."</td>
+                <td>".$eventoyLugar['coordinador']."</td>
+                <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
+  <td style='display: none;'>".$eventoyLugar['longitud']."</td>
+  <td style='display: none;'>".$eventoyLugar['latitud']."</td>
+</tr>";
+$num_eventoYLugar++;
 }
 }
 
@@ -191,6 +194,8 @@ cerrarConexion($con);
                     <p id="organizador"></p>
                     <p id="tipoEvento"></p>
                     <p id="participantes"></p>
+                    <p id="longitud" style='display: none;'></p>
+                    <p id="latitud" style='display: none;'></p>
                 </div>
 
                 <div id="seccion2" class="w3-container city">

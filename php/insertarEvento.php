@@ -8,10 +8,8 @@ $nombreEvento = $_POST["nombreEvento"];
 $diaEvento = $_POST["diaEvento"];
 $tipo = $_POST["tipo"];
 $estado = $_POST["estado"];
-
-
 	
-		if(empty($coordinador) || empty($localizacion) || empty($nombreEvento) || empty($diaEvento) || empty($tipo)){
+	if(empty($coordinador) || empty($localizacion) || empty($nombreEvento) || empty($diaEvento) || empty($tipo)){
 			echo "Debes rellenar todos los campos";
 		}
 		else{

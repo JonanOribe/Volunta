@@ -185,6 +185,14 @@ controlSesionAdmin($coordinadores);
              console.log(arrayIncidencias);
              $('#datosOcultosIncidencias')[0].innerHTML=arrayIncidencias;
           </script>
+
+                        <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#sidebarCollapse').on('click', function() {
+                        $('#sidebar').toggleClass('active');
+                    });
+                });
+            </script>
           </body>
 
 </html>
