@@ -10,13 +10,6 @@ $detalleIncidencia = $_POST["textAreaModal"];
 $persona=obtenerIdVoluntario($con, $dni);
 $voluntario=$persona['idvoluntario'];
 
-
-echo $dni;        
-echo $voluntario;
-echo $evento;
-echo $tipoIncidencia;
-echo $detalleIncidencia;
-
 	
 		if(empty($tipoIncidencia) || empty($detalleIncidencia) || empty($evento)){
 			echo "Debes rellenar todos los campos";
