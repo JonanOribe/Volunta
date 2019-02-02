@@ -51,19 +51,19 @@ controlSesionAdmin($coordinadores);
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';" >Eventos</a>
+                            <a onclick="location.href='listadoEventos.php';" >Eventos</a>
                         </li>
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Voluntarios</a>
+                            <a onclick="location.href='listadoPersonas.php';">Voluntarios</a>
                         </li>
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoCoordinadores.php';">Coordinadores</a> 
+                            <a onclick="location.href='listadoCoordinadores.php';">Coordinadores</a> 
                         </li>
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoLocalizaciones.php';">Localizaciones</a> 
+                            <a onclick="location.href='listadoLocalizaciones.php';">Localizaciones</a> 
                         </li>
                         <li>
-                        <a onclick="location.href='http://127.0.0.1/Volunta/listadoIncidencias.php';">Incidencias</a> 
+                        <a onclick="location.href='listadoIncidencias.php';">Incidencias</a> 
                         </li>
                     </ul>
                 </li>
@@ -79,6 +79,17 @@ controlSesionAdmin($coordinadores);
                         </li>
                         <li>
                             <a href="#" onclick="location.href='informesIncidencias.php';">Incidencias</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gestión</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#" onclick="location.href='dashboard.php';">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="location.href='calendario.php';">Calendario</a>
                         </li>
                     </ul>
                 </li>
@@ -120,10 +131,10 @@ controlSesionAdmin($coordinadores);
 
             <div class="container-fluid">
 
-                    <button type="button" class="btn" id="botonCrearVoluntario" onclick="window.open('http://127.0.0.1/Volunta/crearVoluntario.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Voluntario</button>
-                    <button type="button" class="btn" id="botonCrearCoordinador" onclick="window.open('http://127.0.0.1/Volunta/crearCoordinador.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Coordinador</button>
-                    <button type="button" class="btn" id="botonCrearLocalizacion" onclick="window.open('http://127.0.0.1/Volunta/crearLocalizacion.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Localización</button>
-                    <button type="button" class="btn" id="botonCrearEvento" onclick="window.open('http://127.0.0.1/Volunta/crearEvento.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Evento</button>
+                    <button type="button" class="btn" id="botonCrearVoluntario" onclick="window.open('crearVoluntario.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Voluntario</button>
+                    <button type="button" class="btn" id="botonCrearCoordinador" onclick="window.open('crearCoordinador.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Coordinador</button>
+                    <button type="button" class="btn" id="botonCrearLocalizacion" onclick="window.open('crearLocalizacion.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Localización</button>
+                    <button type="button" class="btn" id="botonCrearEvento" onclick="window.open('crearEvento.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Evento</button>
 
                     <div class="container-fluid">
             </div>

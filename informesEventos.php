@@ -46,19 +46,19 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Listados</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoEventos.php';">Eventos</a>
+                            <a onclick="location.href='listadoEventos.php';">Eventos</a>
                         </li>
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoPersonas.php';">Voluntarios</a>
+                            <a onclick="location.href='listadoPersonas.php';">Voluntarios</a>
                         </li>
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoCoordinadores.php';">Coordinadores</a>
+                            <a onclick="location.href='listadoCoordinadores.php';">Coordinadores</a>
                         </li>
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoLocalizaciones.php';">Localizaciones</a>
+                            <a onclick="location.href='listadoLocalizaciones.php';">Localizaciones</a>
                         </li>
                         <li>
-                            <a onclick="location.href='http://127.0.0.1/Volunta/listadoIncidencias.php';">Incidencias</a> 
+                            <a onclick="location.href='listadoIncidencias.php';">Incidencias</a> 
                         </li>
                     </ul>
                 </li>

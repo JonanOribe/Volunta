@@ -65,9 +65,20 @@ controlSesionVolun($voluntarios);
                             <a class="botonLateralEventos" onclick="enviarFiltro()">Informe</a>
                         </li>
                         <li>
-                        <a href="#" onclick="window.open('http://127.0.0.1/Volunta/insertarIncidencias.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=600,height=400');">Incidencias</a>
+                        <a href="#" onclick="window.open('insertarIncidencias.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=600,height=400');">Incidencias</a>
                         </li>
                     </ul>
+                    <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gestión</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#" onclick="location.href='dashboard.php';">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="location.href='calendario.php';">Calendario</a>
+                        </li>
+                    </ul>
+                </li>
                 </li>
 
             </ul>

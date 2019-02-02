@@ -3,7 +3,7 @@
 require_once("php/control_sesion.php");
 require_once("php/database.php");
 	
-	controlSesionAdmin($coordinadores);
+controlSesionAdmin($coordinadores);
 ?>
 <html>
 
@@ -12,7 +12,7 @@ require_once("php/database.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Vista administrador</title>
+    <title>Vista calendario</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
@@ -54,7 +54,7 @@ require_once("php/database.php");
                         <a onclick="location.href='listadoEventos.php';" >Eventos</a>
                         </li>
                         <li>
-                            <a href="#">Voluntarios</a>
+                            <a onclick="location.href='listadoPersonas.php';">Voluntarios</a>
                         </li>
                         <li>
                             <a onclick="location.href='listadoCoordinadores.php';">Coordinadores</a> 
@@ -63,7 +63,7 @@ require_once("php/database.php");
                             <a onclick="location.href='listadoLocalizaciones.php';">Localizaciones</a> 
                         </li>
                         <li>
-                        <a onclick="location.href='listadoIncidencias.php';">Incidencias</a> 
+                            <a  onclick="location.href='listadoIncidencias.php';">Incidencias</a>
                         </li>
                     </ul>
                 </li>
@@ -128,97 +128,6 @@ require_once("php/database.php");
                     </div>
                 </div>
             </nav>
-
-            <div class="container-fluid">
-
-                    <button type="button" class="btn" id="botonCrearVoluntario" onclick="window.open('crearVoluntario.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Voluntario</button>
-                    <button type="button" class="btn" id="botonCrearCoordinador" onclick="window.open('crearCoordinador.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Coordinador</button>
-                    <button type="button" class="btn" id="botonCrearLocalizacion" onclick="window.open('crearLocalizacion.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Localización</button>
-                    <button type="button" class="btn" id="botonCrearEvento" onclick="window.open('crearEvento.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Evento</button>
-
-                    <div class="container-fluid">
-            </div>
-            <br/>
-            <div id="campoBusqueda">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por nombre.." title="Type in a name">
-            </div>
-            <table id="myTable">
-                <tr class="header">
-                    <th style="width:60%;">DNI</th>
-                    <th style="width:40%;">Nombre</th>
-                </tr>
-                <?php
-      
-      require_once("./php/database.php");
-          
-          echo "<h3>LISTADO PERSONAS</h3>";
-          
-                     
-         $personas = listarPersonas($con);
-          
-          if(count($personas) == 0){
-              echo "<br/>No hay personas<br/>";
-          }
-          else{
-              
-              foreach($personas as $persona){
-                  echo "<tr>
-                          <td>".$persona['dni']."</td>
-                          <td>".$persona['nombre']."</td>
-                          
-                      </tr>";
-              }
-
-          }
-          
-          cerrarConexion($con);
-          
-?>
-            </table>
-
-
-
-        </div>
-    </div>
-
-    <!--MODAL-->
-    <div class="w3-container">
-
-        <div id="id01" class="w3-modal">
-            <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-                <header class="w3-container w3-blue">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-blue w3-xlarge w3-display-topright">&times;</span>
-                    <h2>Información</h2>
-                </header>
-
-                <div class="w3-bar w3-border-bottom">
-                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'tituloEvento');recargarInfo()">Título evento</button>
-                    <button class="tablink w3-bar-item w3-button" onclick="openCity(event, 'seccion2');cargarMapa()">Mapa</button>
-                </div>
-
-                <div id="informacionEvento" class="w3-container city">
-                    <h1>Información evento</h1>
-                    <p id="tituloEvento"></p>
-                    <p id="organizador"></p>
-                    <p id="tipoEvento"></p>
-                    <p id="participantes"></p>
-                </div>
-
-                <div id="seccion2" class="w3-container city">
-                    <h1>Sección mapa</h1>
-                    <div id="espacioMapa">
-
-                    </div>
-                </div>
-
-                <div class="w3-container w3-light-grey w3-padding">
-                    <button class="w3-button w3-right w3-white w3-border" onclick="document.getElementById('id01').style.display='none'">Close</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!--FIN MODAL-->
 
     <script type="text/javascript">
         $(document).ready(function() {

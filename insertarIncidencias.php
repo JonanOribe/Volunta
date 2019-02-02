@@ -44,7 +44,7 @@ controlSesionVolun($voluntarios);
 <div class="col-xs-7"></div>
 
 
-	<form method='post' action='http://127.0.0.1/Volunta/php/insertarIncidenciaUsuario.php'>
+	<form method='post' action='insertarIncidenciaUsuario.php'>
 
 		
 		<ul class="flex-outer">	
