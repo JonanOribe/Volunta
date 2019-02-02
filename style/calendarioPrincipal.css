@@ -1,0 +1,8 @@
+.lnb-calendars-item {
+    display: inline-block;
+    margin-left: 20px
+}
+
+#dropdownMenu-calendarType {
+    width: 120px;
+}
