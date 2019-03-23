@@ -1,5 +1,6 @@
 # Volunta
 
+Wireframes explicando el funcionamiento en: https://github.com/JonanOribe/Volunta/blob/master/Wireframe/Home_Coordinador.png
 Capturas de la aplicación en: https://github.com/JonanOribe/Volunta/tree/master/Wireframe/Vistas
 
 #Extensiones VisualCode:
