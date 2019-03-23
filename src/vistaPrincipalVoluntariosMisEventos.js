@@ -1,7 +1,3 @@
-function recargarInfo() {
-    document.getElementById('informacionEvento').style.display = 'block';
-}
-
 function addRowHandlers() {
     var table = document.getElementById("myTable");
     var rows = table.getElementsByTagName("tr");
