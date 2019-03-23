@@ -1,4 +1,6 @@
 # Volunta
+<a href="https://codeclimate.com/github/JonanOribe/Volunta/test_coverage"><img src="https://api.codeclimate.com/v1/badges/95e1fb24c1b71008f5a2/test_coverage" /></a>
+<a href="https://codeclimate.com/github/JonanOribe/Volunta/maintainability"><img src="https://api.codeclimate.com/v1/badges/95e1fb24c1b71008f5a2/maintainability" /></a>
 
 #Presentación:
 
