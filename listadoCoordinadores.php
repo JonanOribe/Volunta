@@ -66,6 +66,9 @@ controlSesionAdmin($coordinadores);
                         <li>
                         <a onclick="location.href='listadoIncidencias.php';">Incidencias</a> 
                         </li>
+						<li>
+                            <a  onclick="location.href='listadoPermisos.php';">Permisos</a>
+                        </li>
                     </ul>
                 </li>
 
@@ -136,7 +139,7 @@ controlSesionAdmin($coordinadores);
                     <button type="button" class="btn" id="botonCrearCoordinador" onclick="window.open('crearCoordinador.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Coordinador</button>
                     <button type="button" class="btn" id="botonCrearLocalizacion" onclick="window.open('crearLocalizacion.html', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Localización</button>
                     <button type="button" class="btn" id="botonCrearEvento" onclick="window.open('crearEvento.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Evento</button>
-
+                    <button type="button" class="btn" id="botonCrearPermiso" onclick="window.open('crearPermiso.php', '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400');">Crear Permiso</button>
                     <div class="container-fluid">
             </div>
             <br/>

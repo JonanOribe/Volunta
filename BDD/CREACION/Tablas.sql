@@ -63,4 +63,16 @@ FOREIGN KEY (voluntario) REFERENCES voluntario(idvoluntario),
 FOREIGN KEY (evento) REFERENCES evento(idevento)
 );
 
+create table permiso (
+idpermiso int auto_increment primary key,
+codigo VARCHAR(20),
+tipo VARCHAR(20),
+expedidoPor VARCHAR (100),
+fechaSolicitud DATE,
+fechaExpedicion DATE,
+fechaValidez DATE,
+idevento int,
+FOREIGN KEY (idevento) REFERENCES evento(idevento)
+);
+
 
