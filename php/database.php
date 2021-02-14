@@ -54,8 +54,8 @@
 	// CREAR PERSONAS: VOLUNTARIOS Y COORDINADORES //
 			
 	
-	function insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $usuario, $contrasenya){
-		mysqli_query($con, "insert into persona values('$dni', '$nombre', '$apellidos', '$telefono', '$direccion', '$ciudad', '$email', '$usuario', '$contrasenya')");
+	function insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $edad, $sexo, $usuario, $contrasenya){
+		mysqli_query($con, "insert into persona values('$dni', '$nombre', '$apellidos', '$telefono', '$direccion', '$ciudad', '$email', '$edad', '$sexo', '$usuario', '$contrasenya')");
 	}
 	function insertarVoluntario($con, $dni, $horas){
 		mysqli_query($con, "INSERT INTO `voluntario`(`persona`, `horas`) VALUES ('$dni',$horas)");
@@ -160,7 +160,7 @@
 			while($fila = mysqli_fetch_array($result)){
 				$permisos[] = $fila;
 			}
-			return $permisos;//Devuelvo un array con los datos de todos los lugares
+			return $permisos;//Devuelvo un array con los datos de todos los permisos
 		}
 
 	//BUSCAR LOCALIZACIÓN

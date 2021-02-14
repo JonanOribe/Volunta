@@ -176,9 +176,9 @@ controlSesionAdmin($coordinadores);
                         <td>".$permiso['codigo']."</td>
 						<td style='display: none;'>".$permiso['coordinador']."</td>
 						<td>".$permiso['tipo']."</td>
+						<td>".$permiso['fsolicitud']."</td>
 						<td style='display: none;'>".$permiso['longitud']."</td>
                         <td style='display: none;'>".$permiso['latitud']."</td>
-						<td>".$permiso['fsolicitud']."</td>
 						<td>".$permiso['fexpedicion']."</td>
 						<td>".$permiso['fvigencia']."</td>
 						<td>".$permiso['expedido']."</td>
