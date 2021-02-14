@@ -152,6 +152,17 @@
 			return $localizaciones;//Devuelvo un array con los datos de todos los lugares
 		}
 
+		//FUNCIÓN PERMISOS
+		function listarPermisos($con){
+			$result = mysqli_query($con, "SELECT permiso.idpermiso, permiso.codigo as codigo, permiso.tipo as tipo, permiso.expedidoPor as expedido, permiso.fechaSolicitud as fsolicitud, permiso.fechaExpedicion as fexpedicion, permiso.fechaValidez as fvigencia, evento.nombre as nombre, persona.nombre as coordinador, lugar.longitud,lugar.latitud 
+			FROM permiso JOIN evento ON permiso.idevento=evento.idevento JOIN coordinador ON evento.coordinador=coordinador.idcoordinador JOIN persona ON coordinador.persona=persona.dni JOIN lugar ON evento.lugar=lugar.idlugar");
+			$permisos = array();
+			while($fila = mysqli_fetch_array($result)){
+				$permisos[] = $fila;
+			}
+			return $permisos;//Devuelvo un array con los datos de todos los lugares
+		}
+
 	//BUSCAR LOCALIZACIÓN
 	function obtenerLocalizacion($con, $lugar){
 		$resultado = mysqli_query($con, "select * from lugar where nombre='$lugar'");
@@ -228,6 +239,11 @@
 	//CREAR EVENTO
 	function insertarEvento($con, $coordinador, $lugar, $nombre, $dia, $tipo, $estado){
 		mysqli_query($con, "insert into evento(coordinador, lugar, nombre, diaEvento, tipo, estado) values('$coordinador', '$lugar', '$nombre', '$dia', '$tipo', '$estado')");
+	}
+	
+	//CREAR PERMISO
+	function insertarPermiso($con, $codigoPermiso, $fechaSolicitud, $fechaExpedicion, $validez, $tipo, $evento, $expedidoPor){
+		mysqli_query($con, "insert into permiso(codigo, fechaSolicitud, fechaExpedicion, fechaValidez, tipo, idevento, expedidoPor) values('$codigoPermiso', '$fechaSolicitud', '$fechaExpedicion', '$validez', '$tipo', '$evento', '$expedidoPor')");
 	}
 
 

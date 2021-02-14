@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <?php
 require_once("php/control_sesion_voluntario.php");
 require_once("php/database.php");

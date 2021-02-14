@@ -144,42 +144,46 @@ controlSesionAdmin($coordinadores);
             </div>
             <br/>
             <div id="campoBusqueda">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Busqueda por evento.." title="Type in a name">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Búsqueda de permisos por evento.." title="Type in a name">
             </div>
             <table id="myTable">
                 <tr class="header">
                     <th style="width:20%;">ID</th>
-                    <th style="width:20%;">Evento</th>
-                    <th style="width:20%;">Localización</th>
-                    <th style="width:20%;">Coordinador</th>
-                    <th style="width:20%;">Más información</th>
-                    <th style="width:10%;display: none;">Inscribirse</th>
+                    <th style="width:20%;">Código</th>
+					<th style="width:20%;">Tipo</th>
+					<th style="width:20%;">Fecha de solicitud</th>
+					<th style="width:20%;">Fecha de expedición</th>
+					<th style="width:20%;">Válido hasta</th>
+					<th style="width:20%;">Expedido por</th>
+					<th style="width:20%;">Evento</th>
                 </tr>
                 <?php
       
       require_once("./php/database.php");
-          echo "<h3>LISTADO EVENTOS</h3>";
+          echo "<h3>LISTADO PERMISOS</h3>";
           
-         $eventosYLugares=listarEventosYLugares($con);
-         if(count($eventosYLugares) == 0){
-            echo "<br/>No hay eventos<br/>";
+         $permisos=listarPermisos($con);
+         if(count($permisos) == 0){
+            echo "<br/>No hay permisos<br/>";
         }
         else{
             
-            foreach($eventosYLugares as $eventoyLugar){
-                  $id_eventoYLugar=$eventoyLugar['idevento'];
-                  $num_eventoYLugar= 1;
+            foreach($permisos as $permiso){
+                  $id_permiso=$permiso['idpermiso'];
                 echo "<tr>
-                        <td id= evento".$id_eventoYLugar.">".$id_eventoYLugar."</td>
-                        <td>".$eventoyLugar['evento']."</td>
-                        <td>".$eventoyLugar['lugar']."</td>
-                        <td>".$eventoyLugar['coordinador']."</td>
-                        <td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
-                        <td style='display: none;'><button type='button' class='btn btn-info btn-block'><a href='php/testJS_PHP.php?hello=true'>Apuntarse</a></button></td>
-                        <td style='display: none;'>".$eventoyLugar['longitud']."</td>
-                        <td style='display: none;'>".$eventoyLugar['latitud']."</td>
+                        <td id= evento".$id_permiso.">".$id_permiso."</td>
+						<td style='display: none;'>".$permiso['nombre']."</td>
+                        <td>".$permiso['codigo']."</td>
+						<td style='display: none;'>".$permiso['coordinador']."</td>
+						<td>".$permiso['tipo']."</td>
+						<td style='display: none;'>".$permiso['longitud']."</td>
+                        <td style='display: none;'>".$permiso['latitud']."</td>
+						<td>".$permiso['fsolicitud']."</td>
+						<td>".$permiso['fexpedicion']."</td>
+						<td>".$permiso['fvigencia']."</td>
+						<td>".$permiso['expedido']."</td>
+						<td><button type='button' class='btn btn-info btn-block' onclick='addRowHandlers()'>Info</button></td>
                    </tr>";
-                  $num_eventoYLugar++;
             }
         }
                   
@@ -232,7 +236,6 @@ controlSesionAdmin($coordinadores);
         </div>
 
     </div>
-    <!--FIN MODAL-->
 
     <script type="text/javascript">
         $(document).ready(function() {

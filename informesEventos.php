@@ -60,6 +60,9 @@
                         <li>
                             <a onclick="location.href='listadoIncidencias.php';">Incidencias</a> 
                         </li>
+						<li>
+                            <a  onclick="location.href='listadoPermisos.php';">Permisos</a>
+                        </li>
                     </ul>
                 </li>
 
