@@ -10,7 +10,9 @@ direccion varchar(50),
 ciudad varchar(20),
 email varchar(40),
 usuario varchar(40),
-contrasenya varchar(40)
+contrasenya varchar(40),
+edad int(2),
+sexo char(1)
 );
 
 create table coordinador (
