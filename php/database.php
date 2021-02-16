@@ -353,5 +353,18 @@
 		}
 		return $voluntarios;//Devuelvo un array con los datos de todos los voluntarios
 	}
+	
+	function listarEdad($con,$sexo) {
+
+
+
+	$result = mysqli_query($con, "SELECT SUM(IF (YEAR(CURDATE()) - YEAR(fechaNac) BETWEEN 16 AND 19, 1, 0)) as '16-19', SUM(IF (YEAR(CURDATE()) - YEAR(fechaNac)  BETWEEN 20 AND 29, 1, 0)) as '20-29', SUM(IF (YEAR(CURDATE()) - YEAR(fechaNac)  BETWEEN 30 AND 39, 1, 0)) as '30-39',SUM(IF (YEAR(CURDATE()) - YEAR(fechaNac)  >= 40, 1, 0)) as '+40' FROM persona  INNER JOIN voluntario ON persona.dni = voluntario.persona and persona.sexo='$sexo'");
+
+	$edades=array();
+	while($fila = mysqli_fetch_array($result)){
+			$edades[] = $fila;
+		}
+		return $edades;//Devuelvo un array con los datos de todas las edades de los miembros voluntarios
+}
 		
 ?>

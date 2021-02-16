@@ -11,7 +11,7 @@ ciudad varchar(20),
 email varchar(40),
 usuario varchar(40),
 contrasenya varchar(40),
-edad int(2),
+fechaNac date,
 sexo char(1)
 );
 

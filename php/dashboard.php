@@ -230,7 +230,7 @@ Highcharts.chart('container', {
         type: 'bar'
     },
         title: {
-        text: 'Número de voluntarios por rango de edad y sexo'
+        text: 'Número de voluntarios por edad y sexo'
     },
     subtitle: {
         text: 'Source: BBDD'
