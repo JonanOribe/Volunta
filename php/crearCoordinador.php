@@ -9,7 +9,7 @@ $telefono = $_POST["telefono"];
 $direccion = $_POST["direccion"];
 $ciudad = $_POST["ciudad"];
 $email = $_POST["email"];
-$edad = $_POST["edad"];
+$fechaNac = $_POST["fechaNac"];
 $sexo = $_POST["sexo"];
 $ususario = $_POST["usuario"];
 $contrasenya = $_POST["contrasenya"];
@@ -17,11 +17,11 @@ $contrasenya = $_POST["contrasenya"];
 
 
 	
-		if(empty($dni) || empty($nombre) || empty($apellidos) || empty($telefono) || empty($direccion) || empty($ciudad) || empty($email) || empty($edad) || empty($sexo) ){
+		if(empty($dni) || empty($nombre) || empty($apellidos) || empty($telefono) || empty($direccion) || empty($ciudad) || empty($email) || empty($fechaNac) || empty($sexo) ){
 			echo "Debes rellenar todos los campos";
 		}
 		else{
-			insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $ususario, $contrasenya, $edad, $sexo);
+			insertarPersona($con, $dni, $nombre, $apellidos, $telefono, $direccion, $ciudad, $email, $ususario, $contrasenya, $fechaNac, $sexo);
 			//header("Location: admin.php");
 			insertarCoordinador($con, $dni);
 			echo '<BUTTON onclick="window.close();">Close me.</BUTTON>';
